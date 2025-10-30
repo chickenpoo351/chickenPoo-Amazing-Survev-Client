@@ -1,5 +1,6 @@
 # chickenPoo-awesome-survev-client
 my own custom survev client aiming to be better than all others :o
+- **Made by [chickenPoo](https://github.com/chickenpoo351)**
 
 ---
 
@@ -7,7 +8,15 @@ my own custom survev client aiming to be better than all others :o
 
 well you really dont but its cool to have currently it just gives you **custom skins** but more features are on the way :D
 
+here's some cool previews showing off the skin Valiant Pineapple
+
 ---
+
+<h3>Loadout preview</h3>
+<img src="presentation/loadout-presentation.gif">
+
+<h3>In-game preview</h3>
+<img src="presentation/ingame-presentation.gif">
 
 ## Installation Guide
 
@@ -21,7 +30,7 @@ download the zip from the latest release
 
 use a tool like 7zip or winRAR you can find the link both here if you dont have them
 
-- [7zip (Recommended :D)](https://www.7-zip.org/)
+- [7-zip (Recommended :D)](https://www.7-zip.org/)
 - [winRAR](https://www.win-rar.com/)
 
 next after downloading either of these you want to unzip the zip folder you downloaded

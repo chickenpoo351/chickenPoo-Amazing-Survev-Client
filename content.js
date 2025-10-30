@@ -345,6 +345,18 @@ script.remove();
         backpackTint: 0xe4c00,
       },
     },
+    woodland: {
+      base: chrome.runtime.getURL("skins/Woodland/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Woodland/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Woodland/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Woodland/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x2b332a,
+        handTint: 0x5a6c52,
+        footTint: 0x5a6c52,
+        backpackTint: 0x4d2600,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -558,6 +570,12 @@ script.remove();
         rarity: "Common",
         desc: "I'm here for a withdrawl.",
         img: chrome.runtime.getURL("skins/Jester/loot-shirt-outfitJester.svg"),
+      },
+      woodland: {
+        name: "Woodland Combat",
+        rarity: "Common",
+        desc: "Common component of PARMA survival caches.",
+        img: chrome.runtime.getURL("skins/Woodland/loot-shirt-outfitWoodland.svg"),
       },
     };
 
