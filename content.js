@@ -357,6 +357,18 @@ script.remove();
         backpackTint: 0x4d2600,
       },
     },
+    fortune: {
+      base: chrome.runtime.getURL("skins/Fortune/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Fortune/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Fortune/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Fortune/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x7f2723,
+        handTint: 0xe8c22a,
+        footTint: 0xe8c22a,
+        backpackTint: 0x984f00,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -576,6 +588,12 @@ script.remove();
         rarity: "Common",
         desc: "Common component of PARMA survival caches.",
         img: chrome.runtime.getURL("skins/Woodland/loot-shirt-outfitWoodland.svg"),
+      },
+      fortune: {
+        name: "Royal Fortune",
+        rarity: "Rare",
+        desc: "Fit for a king.",
+        img: chrome.runtime.getURL("skins/Fortune/loot-shirt-outfitRoyalFortune"),
       },
     };
 

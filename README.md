@@ -1,4 +1,4 @@
-# chickenPoo-awesome-survev-client
+# chickenPoo's awesome survev client
 my own custom survev client aiming to be better than all others :o
 - **Made by [chickenPoo](https://github.com/chickenpoo351)**
 
