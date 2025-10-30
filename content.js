@@ -333,6 +333,18 @@ script.remove();
         backpackTint: 0xffae00,
       },
     },
+    jester: {
+      base: chrome.runtime.getURL("skins/Jester/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Jester/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Jester/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Jester/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x770078,
+        handTint: 0x4b004c,
+        footTint: 0x4b004c,
+        backpackTint: 0xe4c00,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -540,6 +552,12 @@ script.remove();
         rarity: "Common",
         desc: "My lucky day!",
         img: chrome.runtime.getURL("skins/NewBlack/loot-shirt-outfitNewBlack.svg"),
+      },
+      jester: {
+        name: "Jesters Folly",
+        rarity: "Common",
+        desc: "I'm here for a withdrawl.",
+        img: chrome.runtime.getURL("skins/Jester/loot-shirt-outfitJester.svg"),
       },
     };
 
