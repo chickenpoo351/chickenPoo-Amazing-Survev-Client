@@ -309,6 +309,18 @@ script.remove();
         backpackTint: 0x655231,
       },
     },
+    casanova: {
+      base: chrome.runtime.getURL("skins/Casanova/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Casanova/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Casanova/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Casanova/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x42080c,
+        handTint: 0x740007,
+        footTint: 0x740007,
+        backpackTint: 0x101010,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -504,6 +516,12 @@ script.remove();
         rarity: "Rare",
         desc: "Special issue for staffers at Bunker 1.",
         img: chrome.runtime.getURL("skins/Core/loot-shirt-outfitParmaPrestige.svg"),
+      },
+      casanova: {
+        name: "Casanova Silks",
+        rarity: "Common",
+        desc: "I tried to warn them.",
+        img: chrome.runtime.getURL("skins/Casanova/loot-shirt-outfitCasanova.svg"),
       },
     };
 
