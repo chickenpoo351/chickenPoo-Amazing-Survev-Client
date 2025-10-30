@@ -611,7 +611,7 @@ script.remove();
         name: "Key Lime",
         rarity: "Common",
         desc: "Not for eating.",
-        img: chrome.runtime.getURL("skins/Fortune/loot-shirt-outfitKeyLime.svg"),
+        img: chrome.runtime.getURL("skins/Lime/loot-shirt-outfitKeyLime.svg"),
       },
     };
 
