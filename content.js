@@ -405,6 +405,18 @@ script.remove();
         backpackTint: 0x999999,
       },
     },
+    carbon: {
+      base: chrome.runtime.getURL("skins/Carbon/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Carbon/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Carbon/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Carbon/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x212121,
+        handTint: 0x1c1c1c,
+        footTint: 0x1c1c1c,
+        backpackTint: 0x363636,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -648,6 +660,12 @@ script.remove();
         rarity: "Common",
         desc: "Pin not included. Maybe.",
         img: chrome.runtime.getURL("skins/Fragtastic/loot-shirt-outfitFragtastic.svg"),
+      },
+      carbon: {
+        name: "Carbon Fiber",
+        rarity: "Uncommon",
+        desc: "Military-grade, fine spunt filament.",
+        img: chrome.runtime.getURL("skins/Carbon/loot-shirt-outfitCarbonFiber.svg"),
       },
     };
 
