@@ -417,6 +417,18 @@ script.remove();
         backpackTint: 0x363636,
       },
     },
+    professional: {
+      base: chrome.runtime.getURL("skins/Professional/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Professional/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Professional/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Professional/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0xf8c574,
+        handTint: 0xbe7800,
+        footTint: 0xbe7800,
+        backpackTint: 0xa36700,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -666,6 +678,12 @@ script.remove();
         rarity: "Uncommon",
         desc: "Military-grade, fine spunt filament.",
         img: chrome.runtime.getURL("skins/Carbon/loot-shirt-outfitCarbonFiber.svg"),
+      },
+      professional: {
+        name: "The Professional",
+        rarity: "Uncommon",
+        desc: "True survivrs wear the dark gloves.",
+        img: chrome.runtime.getURL("skins/Professional/loot-shirt-outfitDarkGloves.svg"),
       },
     };
 
