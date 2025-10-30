@@ -381,6 +381,18 @@ script.remove();
         backpackTint: 0xbc8737,
       },
     },
+    cobalt: {
+      base: chrome.runtime.getURL("skins/Cobalt/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Cobalt/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Cobalt/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Cobalt/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x2b57,
+        handTint: 0x295e7c,
+        footTint: 0x295e7c,
+        backpackTint: 0x4a95,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -612,6 +624,12 @@ script.remove();
         rarity: "Common",
         desc: "Not for eating.",
         img: chrome.runtime.getURL("skins/Lime/loot-shirt-outfitKeyLime.svg"),
+      },
+      cobalt: {
+        name: "Cobalt Shell",
+        rarity: "Common",
+        desc: "It means bluish.",
+        img: chrome.runtime.getURL("skins/Cobalt/loot-shirt-outfitCobaltShell.svg"),
       },
     };
 
