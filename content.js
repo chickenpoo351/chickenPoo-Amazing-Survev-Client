@@ -321,6 +321,18 @@ script.remove();
         backpackTint: 0x101010,
       },
     },
+    newblack: {
+      base: chrome.runtime.getURL("skins/NewBlack/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/NewBlack/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/NewBlack/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/NewBlack/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0xff5c22,
+        handTint: 0xfc7523,
+        footTint: 0xfc7523,
+        backpackTint: 0xffae00,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -522,6 +534,12 @@ script.remove();
         rarity: "Common",
         desc: "I tried to warn them.",
         img: chrome.runtime.getURL("skins/Casanova/loot-shirt-outfitCasanova.svg"),
+      },
+      newblack: {
+        name: "The New Black",
+        rarity: "Common",
+        desc: "My lucky day!",
+        img: chrome.runtime.getURL("skins/NewBlack/loot-shirt-outfitNewBlack.svg"),
       },
     };
 
