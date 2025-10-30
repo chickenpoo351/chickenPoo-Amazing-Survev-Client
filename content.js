@@ -369,6 +369,18 @@ script.remove();
         backpackTint: 0x984f00,
       },
     },
+    lime: {
+      base: chrome.runtime.getURL("skins/Lime/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Lime/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Lime/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Lime/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0xc7ff3f,
+        handTint: 0xeeff5d,
+        footTint: 0xeeff5d,
+        backpackTint: 0xbc8737,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -594,6 +606,12 @@ script.remove();
         rarity: "Rare",
         desc: "Fit for a king.",
         img: chrome.runtime.getURL("skins/Fortune/loot-shirt-outfitRoyalFortune.svg"),
+      },
+      lime: {
+        name: "Key Lime",
+        rarity: "Common",
+        desc: "Not for eating.",
+        img: chrome.runtime.getURL("skins/Fortune/loot-shirt-outfitKeyLime.svg"),
       },
     };
 
