@@ -273,6 +273,18 @@ script.remove();
         backpackTint: 0xffecca,
       },
     },
+    initiative: {
+      base: chrome.runtime.getURL("skins/Initiative/player-base-02.svg"),
+      hands: chrome.runtime.getURL("skins/Initiative/player-hands-02.svg"),
+      feet: chrome.runtime.getURL("skins/Initiative/player-feet-02.svg"),
+      backpack: chrome.runtime.getURL("skins/Initiative/player-circle-base-02.svg"),
+      tints: {
+        baseTint: 0xc3ae85,
+        handTint: 0x8f8064,
+        footTint: 0x8f8064,
+        backpackTint: 0x40392c,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -450,6 +462,12 @@ script.remove();
         rarity: "Uncommon",
         desc: "Now thats coral.",
         img: chrome.runtime.getURL("skins/Coral/loot-shirt-outfitCoral.svg"),
+      },
+      initiative: {
+        name: "The Initiative",
+        rarity: "Common",
+        desc: "For those within the Initiative.",
+        img: chrome.runtime.getURL("skins/Initiative/loot-shirt-outfitInitiative.svg"),
       },
     };
 
