@@ -297,6 +297,18 @@ script.remove();
         backpackTint: 0x40392c,
       },
     },
+    core: {
+      base: chrome.runtime.getURL("skins/Core/player-base-outfitParmaPrestige.svg"),
+      hands: chrome.runtime.getURL("skins/Core/player-hands-02.svg"),
+      feet: chrome.runtime.getURL("skins/Core/player-feet-02.svg"),
+      backpack: chrome.runtime.getURL("skins/Core/player-circle-base-02.svg"),
+      tints: {
+        baseTint: 0xe3c081,
+        handtint: 0xa9936b,
+        footTint: 0xa9936b,
+        backpackTint: 0x655231,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -486,6 +498,12 @@ script.remove();
         rarity: "Common",
         desc: "Next generation inversion.",
         img: chrome.runtime.getURL("skins/Jumpsuit/loot-shirt-outfitParma.svg"),
+      },
+      core: {
+        name: "The Core Jumpsuit",
+        rarity: "Rare",
+        desc: "Special issue for staffers at Bunker 1.",
+        img: chrome.runtime.getURL("skins/Core/loot-shirt-outfitParmaPrestige.svg"),
       },
     };
 
