@@ -393,6 +393,18 @@ script.remove();
         backpackTint: 0x4a95,
       },
     },
+    fragtastic: {
+      base: chrome.runtime.getURL("skins/Fragtastic/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Fragtastic/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Fragtastic/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Fragtastic/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x62591f,
+        handTint: 0x7f742a,
+        footTint: 0x7f742a,
+        backpackTint: 0x999999,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -630,6 +642,12 @@ script.remove();
         rarity: "Common",
         desc: "It means bluish.",
         img: chrome.runtime.getURL("skins/Cobalt/loot-shirt-outfitCobaltShell.svg"),
+      },
+      fragtastic: {
+        name: "Fragtastic",
+        rarity: "Common",
+        desc: "Pin not included. Maybe.",
+        img: chrome.runtime.getURL("skins/Fragtastic/loot-shirt-outfitFragtastic.svg"),
       },
     };
 
