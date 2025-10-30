@@ -429,6 +429,18 @@ script.remove();
         backpackTint: 0xa36700,
       },
     },
+    desert: {
+      base: chrome.runtime.getURL("skins/Desert/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Desert/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Desert/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Desert/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0xd19b4e,
+        handTint: 0xaa6d16,
+        footTint: 0xaa6d16,
+        backpackTint: 0xffcb82,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -684,6 +696,12 @@ script.remove();
         rarity: "Uncommon",
         desc: "True survivrs wear the dark gloves.",
         img: chrome.runtime.getURL("skins/Professional/loot-shirt-outfitDarkGloves.svg"),
+      },
+      desert: {
+        name: "Desert Camo",
+        rarity: "Common",
+        desc: "Stealth in the sand.",
+        img: chrome.runtime.getURL("skins/Desert/loot-shirt-outfitDesertCamo.svg"),
       },
     };
 
