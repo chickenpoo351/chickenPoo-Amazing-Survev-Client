@@ -285,6 +285,18 @@ script.remove();
         backpackTint: 0x40392c,
       },
     },
+    jumpsuit: {
+      base: chrome.runtime.getURL("skins/Jumpsuit/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Jumpsuit/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Jumpsuit/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Jumpsuit/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x857659,
+        handTint: 0xc3ae85,
+        footTint: 0xc3ae85,
+        backpackTint: 0x40392c,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -468,6 +480,12 @@ script.remove();
         rarity: "Common",
         desc: "For those within the Initiative.",
         img: chrome.runtime.getURL("skins/Initiative/loot-shirt-outfitInitiative.svg"),
+      },
+      jumpsuit: {
+        name: "PARMA Jumpsuit",
+        rarity: "Common",
+        desc: "Next generation inversion.",
+        img: chrome.runtime.getURL("skins/Jumpsuit/loot-shirt-outfitParma.svg"),
       },
     };
 
