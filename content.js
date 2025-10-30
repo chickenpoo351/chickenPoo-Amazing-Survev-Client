@@ -261,6 +261,18 @@ script.remove();
         backpackTint: 0x8302c,
       },
     },
+    coral: {
+      base: chrome.runtime.getURL("skins/Coral/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Coral/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Coral/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Coral/player-feet-01.svg"),
+      tints: {
+        baseTint: 0xff5f67,
+        handTint: 0xff898f,
+        footTint: 0xff898f,
+        backpackTint: 0xffecca,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -432,6 +444,12 @@ script.remove();
         rarity: "Rare",
         desc: "Protector of the deep.",
         img: chrome.runtime.getURL("skins/Aquatic/loot-shirt-outfitAquatic.svg"),
+      },
+      coral: {
+        name: "Coral Guise",
+        rarity: "Uncommon",
+        desc: "Now thats coral.",
+        img: chrome.runtime.getURL("skins/Coral/loot-shirt-outfitCoral.svg"),
       },
     };
 
