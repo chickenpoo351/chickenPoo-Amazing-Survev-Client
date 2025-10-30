@@ -593,7 +593,7 @@ script.remove();
         name: "Royal Fortune",
         rarity: "Rare",
         desc: "Fit for a king.",
-        img: chrome.runtime.getURL("skins/Fortune/loot-shirt-outfitRoyalFortune"),
+        img: chrome.runtime.getURL("skins/Fortune/loot-shirt-outfitRoyalFortune.svg"),
       },
     };
 
