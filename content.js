@@ -441,6 +441,18 @@ script.remove();
         backpackTint: 0xffcb82,
       },
     },
+    forest: {
+      base: chrome.runtime.getURL("skins/Forest/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Forest/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Forest/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Forest/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x999966,
+        handTint: 0x848457,
+        footTint: 0x848457,
+        backpackTint: 0x666633,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -702,6 +714,12 @@ script.remove();
         rarity: "Common",
         desc: "Stealth in the sand.",
         img: chrome.runtime.getURL("skins/Desert/loot-shirt-outfitDesertCamo.svg"),
+      },
+      forest: { 
+      name: "Forest Camo",
+      rarity: "Common",
+      desc: "Be one with the trees.",
+      img: chrome.runtime.getURL("skins/Forest/loot-shirt-outfitCamo.svg"),
       },
     };
 
