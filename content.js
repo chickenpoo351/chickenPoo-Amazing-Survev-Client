@@ -265,7 +265,7 @@ script.remove();
       base: chrome.runtime.getURL("skins/Coral/player-base-01.svg"),
       hands: chrome.runtime.getURL("skins/Coral/player-hands-01.svg"),
       feet: chrome.runtime.getURL("skins/Coral/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Coral/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Coral/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xff5f67,
         handTint: 0xff898f,
