@@ -453,6 +453,30 @@ script.remove();
         backpackTint: 0x666633,
       },
     },
+    target: {
+      base: chrome.runtime.getURL("skins/Target/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Target/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Target/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Target/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0xff0000,
+        handTint: 0xd40000,
+        footTint: 0xd40000,
+        backpackTint: 0xb70000,
+      },
+    },
+    arctic: {
+      base: chrome.runtime.getURL("skins/Arctic/player-base-01.svg"),
+      hands: chrome.runtime.getURL("skins/Arctic/player-hands-01.svg"),
+      feet: chrome.runtime.getURL("skins/Arctic/player-feet-01.svg"),
+      backpack: chrome.runtime.getURL("skins/Arctic/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0xe3e3e3,
+        handTint: 0xeeeeee,
+        footTint: 0xeeeeee,
+        backpackTint: 0xdcdcdc,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -720,6 +744,18 @@ script.remove();
       rarity: "Common",
       desc: "Be one with the trees.",
       img: chrome.runtime.getURL("skins/Forest/loot-shirt-outfitCamo.svg"),
+      },
+      target: {
+        name: "Target Practice",
+        rarity: "Common",
+        desc: "On the plus side, they won't see you bleed.",
+        img: chrome.runtime.getURL("skins/Target/loot-shirt-outfitRed.svg"),
+      },
+      Arctic: {
+        name: "Arctic Avenger",
+        rarity: "Common",
+        desc: "No business like snow business.",
+        img: chrome.runtime.getURL("skins/Arctic/loot-shirt-outfitWhite.svg"),
       },
     };
 
