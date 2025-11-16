@@ -1,0 +1,4 @@
+# stuff you dont need
+/presentation/* export-ignore
+README.md export-ignore
+fps-and-ping-counter.js export-ignore

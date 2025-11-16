@@ -3,6 +3,14 @@ const script = document.createElement("script");
 script.src = chrome.runtime.getURL("pageHook.js");
 (document.head || document.documentElement).appendChild(script);
 script.remove();
+// Inject fps-and-ping-counter.js into page context
+(function injectFPS() {
+  const script = document.createElement('script');
+  script.src = chrome.runtime.getURL('fps-and-ping-counter.js');
+  script.onload = () => script.remove(); // clean up after inject
+  (document.head || document.documentElement).appendChild(script);
+})();
+
 
 (() => {
   console.log("[custom-skin] content script active");
@@ -751,7 +759,7 @@ script.remove();
         desc: "On the plus side, they won't see you bleed.",
         img: chrome.runtime.getURL("skins/Target/loot-shirt-outfitRed.svg"),
       },
-      Arctic: {
+      arctic: {
         name: "Arctic Avenger",
         rarity: "Common",
         desc: "No business like snow business.",

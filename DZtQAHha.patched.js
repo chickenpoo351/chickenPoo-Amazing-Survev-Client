@@ -9149,8 +9149,9 @@ const bf = Object.freeze(Object.defineProperty({
 }, Symbol.toStringTag, {
     value: "Module"
 }));
+// customskin code inject
 window.PIXI = bf;
-console.log("PIXI Exposed I Think...")
+// customskin code inject end
 var be = (a => (a.Renderer = "renderer",
 a.Application = "application",
 a.RendererSystem = "renderer-webgl-system",
@@ -9764,8 +9765,9 @@ const kf = {
     }
 }
 ;
+// customskin code inject
 window.PIXIBaseTexture = vp;
-console.log("PIXI BaseTexture creation hook loaded");
+// customskin code inject end
 vp.defaultOptions = {
     mipmap: ya.POW2,
     anisotropicLevel: 0,
@@ -12699,8 +12701,9 @@ class Ie extends xs {
         return Ie._WHITE
     }
 }
+// customskin code inject
 window.PIXITexture = Ie;
-console.log("PIXI.Texture exposed:", window.PIXITexture);
+// customskin code inject end
 class xa extends Ie {
     constructor(e, t) {
         super(e, t),
@@ -34518,7 +34521,7 @@ const Qx = {
     vss: {
         name: "VSS",
         type: "gun",
-        quality: 1,
+        quality: 0,
         fireMode: "single",
         caseTiming: "shoot",
         ammo: "9mm",
