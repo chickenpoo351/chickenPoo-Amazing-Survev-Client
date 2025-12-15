@@ -21,10 +21,10 @@ async function updateRules() {
           priority: 1,
           action: {
             type: "redirect",
-            redirect: { extensionPath: "/DZtQAHha.patched.js" }
+            redirect: { extensionPath: "/DW7nj_xY.patched.js" }
           },
           condition: {
-            urlFilter: "||survev.io/js/DZtQAHha.js",
+            urlFilter: "||survev.io/js/DW7nj_xY.js",
             resourceTypes: ["script"]
           }
         },
@@ -33,10 +33,10 @@ async function updateRules() {
           priority: 1,
           action: {
             type: "redirect",
-            redirect: { extensionPath: "/C7Vkn0uv.patched.js" }
+            redirect: { extensionPath: "/L5e7910t.patched.js" }
           },
           condition: {
-            urlFilter: "||survev.io/js/C7Vkn0uv.js",
+            urlFilter: "||survev.io/js/L5e7910t.js",
             resourceTypes: ["script"]
           }
         }

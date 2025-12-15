@@ -9149,7 +9149,7 @@ const bf = Object.freeze(Object.defineProperty({
 }, Symbol.toStringTag, {
     value: "Module"
 }));
-// customskin code inject
+// customskin code inject #1 of 3
 window.PIXI = bf;
 // customskin code inject end
 var be = (a => (a.Renderer = "renderer",
@@ -9765,7 +9765,7 @@ const kf = {
     }
 }
 ;
-// customskin code inject
+// customskin code inject #2 of 3
 window.PIXIBaseTexture = vp;
 // customskin code inject end
 vp.defaultOptions = {
@@ -12701,7 +12701,7 @@ class Ie extends xs {
         return Ie._WHITE
     }
 }
-// customskin code inject
+// customskin code inject #3 of 3
 window.PIXITexture = Ie;
 // customskin code inject end
 class xa extends Ie {
@@ -34375,12 +34375,12 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-med-01.img",
+            sprite: "gun-vector-01.img",
             scale: {
                 x: .5,
                 y: .5
             },
-            tint: 9009504,
+            tint: 16777215,
             leftHandOffset: {
                 x: 7,
                 y: 0
@@ -34414,7 +34414,7 @@ const Qx = {
         reloadTime: 1.6,
         fireDelay: .044,
         switchDelay: .75,
-        barrelLength: 2.5,
+        barrelLength: 2.45,
         barrelOffset: 0,
         recoilTime: 1e10,
         moveSpread: 6.5,
@@ -34434,12 +34434,12 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-med-01.img",
+            sprite: "gun-vector45-01.img",
             scale: {
                 x: .5,
                 y: .5
             },
-            tint: 9009504,
+            tint: 16777215,
             leftHandOffset: {
                 x: 7,
                 y: 0
@@ -35035,7 +35035,7 @@ const Qx = {
         fireDelay: 1,
         switchDelay: 1,
         pullDelay: 1,
-        barrelLength: 3.5,
+        barrelLength: 3.65,
         barrelOffset: 0,
         recoilTime: 1e10,
         moveSpread: 1,
@@ -35055,14 +35055,14 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-long-01.img",
+            sprite: "gun-scout_elite-01.img",
             scale: {
                 x: .5,
-                y: .52
+                y: .5
             },
-            tint: 3290683,
+            tint: 16777215,
             leftHandOffset: {
-                x: 2.8,
+                x: 6,
                 y: 0
             },
             recoil: 2.33
@@ -35155,7 +35155,7 @@ const Qx = {
         reloadTime: 2.7,
         fireDelay: .09,
         switchDelay: .75,
-        barrelLength: 3.15,
+        barrelLength: 3.43,
         barrelOffset: 0,
         recoilTime: 1e10,
         moveSpread: 5,
@@ -35175,12 +35175,12 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-long-01.img",
+            sprite: "gun-scar-01.img",
             scale: {
                 x: .5,
-                y: .435
+                y: .5
             },
-            tint: 10189640,
+            tint: 16777215,
             leftHandOffset: {
                 x: 2.8,
                 y: 0
@@ -35657,7 +35657,7 @@ const Qx = {
         fireDelay: .7,
         switchDelay: 1,
         pullDelay: 1,
-        barrelLength: 3.7,
+        barrelLength: 3.78,
         barrelOffset: 0,
         recoilTime: 1e10,
         moveSpread: 3,
@@ -35677,12 +35677,12 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-long-01.img",
+            sprite: "gun-model94-01.img",
             scale: {
                 x: .5,
-                y: .5175
+                y: .5
             },
-            tint: 10510624,
+            tint: 16777215,
             leftHandOffset: {
                 x: 3.2,
                 y: 0
@@ -35778,7 +35778,7 @@ const Qx = {
         fireDelay: .8,
         switchDelay: 1,
         pullDelay: 1,
-        barrelLength: 3.8,
+        barrelLength: 3.85,
         barrelOffset: 0,
         recoilTime: 1e10,
         moveSpread: 3,
@@ -35798,12 +35798,12 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-long-01.img",
+            sprite: "gun-blr-01.img",
             scale: {
                 x: .5,
-                y: .53
+                y: .5
             },
-            tint: 4663046,
+            tint: 16777215,
             leftHandOffset: {
                 x: 6.4,
                 y: 0
@@ -35844,7 +35844,7 @@ const Qx = {
         fireDelay: 1.75,
         switchDelay: 1,
         pullDelay: 1,
-        barrelLength: 3.75,
+        barrelLength: 3.95,
         barrelOffset: 0,
         recoilTime: 1e10,
         moveSpread: 3,
@@ -35864,14 +35864,14 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-long-01.img",
+            sprite: "gun-mosin-01.img",
             scale: {
                 x: .5,
-                y: .52
+                y: .5
             },
-            tint: 3348992,
+            tint: 16777215,
             leftHandOffset: {
-                x: 2.8,
+                x: 7,
                 y: 0
             },
             recoil: 2.33
@@ -36275,7 +36275,7 @@ const Qx = {
         reloadTime: .7,
         fireDelay: .3,
         switchDelay: .9,
-        barrelLength: 3.15,
+        barrelLength: 3.7,
         barrelOffset: 0,
         recoilTime: 1e10,
         moveSpread: 2,
@@ -36296,12 +36296,12 @@ const Qx = {
             attack: 0
         },
         worldImg: {
-            sprite: "gun-long-01.img",
+            sprite: "gun-m1100-01.img",
             scale: {
                 x: .5,
-                y: .435
+                y: .5
             },
-            tint: 3032110,
+            tint: 16777215,
             leftHandOffset: {
                 x: 7,
                 y: 0
@@ -37456,7 +37456,7 @@ const Qx = {
         reloadTime: 3,
         fireDelay: .12,
         switchDelay: .3,
-        barrelLength: 2.26,
+        barrelLength: 2.55,
         barrelOffset: 0,
         recoilTime: .35,
         moveSpread: 3,
@@ -37476,12 +37476,12 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-short-01.img",
+            sprite: "gun-colt45-01.img",
             scale: {
                 x: .5,
-                y: .52
+                y: .5
             },
-            tint: 12895428,
+            tint: 16777215,
             leftHandOffset: {
                 x: 0,
                 y: 0
@@ -37517,7 +37517,7 @@ const Qx = {
         reloadTime: 5.1,
         fireDelay: .13,
         switchDelay: .3,
-        barrelLength: 2.26,
+        barrelLength: 2.55,
         barrelOffset: 0,
         dualOffset: .55,
         recoilTime: .35,
@@ -37538,12 +37538,12 @@ const Qx = {
             scale: .3
         },
         worldImg: {
-            sprite: "gun-short-01.img",
+            sprite: "gun-colt45-01.img",
             scale: {
                 x: .5,
-                y: .52
+                y: .5
             },
-            tint: 12895428,
+            tint: 16777215,
             leftHandOffset: {
                 x: 0,
                 y: 0
@@ -40288,8 +40288,7 @@ const s_ = {
         }
     }),
     outfitCarbonFiber: Ae("outfitBase", {
-        name: "game-outfitCarbonFiber",
-        noDropOnDeath: !0,
+        name: "Carbon Fiber",
         rarity: G.Uncommon,
         lore: "game-outfitCarbonFiber-lore",
         skinImg: {
@@ -40308,8 +40307,7 @@ const s_ = {
         }
     }),
     outfitDarkGloves: Ae("outfitBase", {
-        name: "game-outfitDarkGloves",
-        noDropOnDeath: !0,
+        name: "The Professional",
         rarity: G.Uncommon,
         lore: "game-outfitDarkGloves-lore",
         skinImg: {
@@ -40403,8 +40401,7 @@ const s_ = {
         }
     }),
     outfitRed: Ae("outfitBase", {
-        name: "game-outfitRed",
-        noDropOnDeath: !0,
+        name: "Target Practice",
         rarity: G.Common,
         lore: "game-outfitRed-lore",
         skinImg: {
@@ -40423,8 +40420,7 @@ const s_ = {
         }
     }),
     outfitWhite: Ae("outfitBase", {
-        name: "game-outfitWhite",
-        noDropOnDeath: !0,
+        name: "Arctic Avenger",
         rarity: G.Common,
         lore: "game-outfitWhite-lore",
         skinImg: {
@@ -75368,7 +75364,7 @@ const os = {
             name: "pumpkin_break_01",
             channel: "sfx"
         }],
-        atlases: ["main", "gradient", "loadout", "shared"]
+        atlases: ["gradient", "loadout", "shared", "turkey"]
     },
     biome: {
         colors: {
@@ -75393,8 +75389,8 @@ const os = {
             crate_01: 45,
             crate_02: 3,
             crate_03: 7,
-            bush_06tr: 100,
-            cache_06: 12,
+            bush_06tr: 70,
+            cache_03: 50,
             tree_07: 20,
             tree_08: 170,
             tree_08b: 4,
@@ -75439,7 +75435,7 @@ const os = {
             },
             greenhouse_01: 1,
             cache_01: 1,
-            cache_02: 1,
+            cache_02w: 1,
             cache_07: 1,
             bunker_structure_01: {
                 odds: .05
@@ -75541,7 +75537,7 @@ const os = {
             name: "snowball_pickup_01",
             channel: "ui"
         }],
-        atlases: ["gradient", "loadout", "shared", "woods", "snow"]
+        atlases: ["gradient", "loadout", "shared", "woods"]
     },
     biome: {
         colors: {
