@@ -1,15 +1,20 @@
+// browser compatability stuff
+let browserRuntime;
+
+if(typeof chrome !== "undefined" && chrome.runtime) {
+  browserRuntime = chrome.runtime;
+  console.log('using chrome API');
+} else if(typeof browser !== "undefined" && browser.runtime) {
+  browserRuntime = browser.runtime;
+  console.log('using browser API');
+}
+
+
 // Inject pageHook.js into the page context
 const script = document.createElement("script");
-script.src = chrome.runtime.getURL("pageHook.js");
+script.src = browserRuntime.getURL("pageHook.js");
 (document.head || document.documentElement).appendChild(script);
 script.remove();
-// Inject fps-and-ping-counter.js into page context
-(function injectFPS() {
-  const script = document.createElement('script');
-  script.src = chrome.runtime.getURL('fps-and-ping-counter.js');
-  script.onload = () => script.remove(); // clean up after inject
-  (document.head || document.documentElement).appendChild(script);
-})();
 
 
 (() => {
@@ -18,10 +23,10 @@ script.remove();
   // --- Custom skin definitions ---
   const customPaths = {
     turkey: {
-      base: chrome.runtime.getURL("skins/Turkey/player-base-outfitTurkey.svg"),
-      hands: chrome.runtime.getURL("skins/Turkey/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Turkey/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Turkey/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Turkey/player-base-outfitTurkey.svg"),
+      hands: browserRuntime.getURL("skins/Turkey/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Turkey/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Turkey/player-circle-base-02.svg"),
       tints: {
         baseTint: 0xf0cebb,
         handTint: 0xa51300,
@@ -30,10 +35,10 @@ script.remove();
       },
     },
     developer: {
-      base: chrome.runtime.getURL("skins/Developr/player-base-outfitDC.svg"),
-      hands: chrome.runtime.getURL("skins/Developr/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Developr/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Developr/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Developr/player-base-outfitDC.svg"),
+      hands: browserRuntime.getURL("skins/Developr/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Developr/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Developr/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x348628,
         handTint: 0x69da22,
@@ -42,10 +47,10 @@ script.remove();
       },
     },
     designer: {
-      base: chrome.runtime.getURL("skins/Designr/player-base-outfitDC.svg"),
-      hands: chrome.runtime.getURL("skins/Designr/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Designr/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Designr/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Designr/player-base-outfitDC.svg"),
+      hands: browserRuntime.getURL("skins/Designr/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Designr/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Designr/player-circle-base-02.svg"),
       tints: {
         baseTint: 0xab3030,
         handTint: 0xe35f5f,
@@ -54,10 +59,10 @@ script.remove();
       },
     },
     moderator: {
-      base: chrome.runtime.getURL("skins/Moderatr/player-base-outfitDC.svg"),
-      hands: chrome.runtime.getURL("skins/Moderatr/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Moderatr/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Moderatr/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Moderatr/player-base-outfitDC.svg"),
+      hands: browserRuntime.getURL("skins/Moderatr/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Moderatr/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Moderatr/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x3393db,
         handTint: 0x93c7ee,
@@ -66,10 +71,10 @@ script.remove();
       },
     },
     wheat: {
-      base: chrome.runtime.getURL("skins/Wheat/player-base-outfitWheat.svg"),
-      hands: chrome.runtime.getURL("skins/Wheat/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Wheat/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Wheat/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Wheat/player-base-outfitWheat.svg"),
+      hands: browserRuntime.getURL("skins/Wheat/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Wheat/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Wheat/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xffffff,
         handTint: 0xf0dd92,
@@ -78,10 +83,10 @@ script.remove();
       },
     },
     noir: {
-      base: chrome.runtime.getURL("skins/Noir/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Noir/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Noir/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Noir/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Noir/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Noir/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Noir/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Noir/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x1b1b1b,
         handTint: 0xffffff,
@@ -90,10 +95,10 @@ script.remove();
       },
     },
     weathered: {
-      base: chrome.runtime.getURL("skins/Weathered/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Weathered/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Weathered/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Weathered/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Weathered/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Weathered/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Weathered/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Weathered/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x9a1818,
         handTint: 0xff0000,
@@ -102,10 +107,10 @@ script.remove();
       },
     },
     stifled: {
-      base: chrome.runtime.getURL("skins/Stifled/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Stifled/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Stifled/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Stifled/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Stifled/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Stifled/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Stifled/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Stifled/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x173e99,
         handTint: 0x4eff,
@@ -114,10 +119,10 @@ script.remove();
       },
     },
     siberian: {
-      base: chrome.runtime.getURL("skins/Siberian/player-base-outfitSpetsnaz.svg"),
-      hands: chrome.runtime.getURL("skins/Siberian/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Siberian/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Siberian/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Siberian/player-base-outfitSpetsnaz.svg"),
+      hands: browserRuntime.getURL("skins/Siberian/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Siberian/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Siberian/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xffffff,
         handTint: 0xe4e4e4,
@@ -126,10 +131,10 @@ script.remove();
       },
     },
     green: {
-      base: chrome.runtime.getURL("skins/Green/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Green/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Green/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Green/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Green/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Green/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Green/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Green/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x2aff00,
         handTint: 0xfeffaa,
@@ -138,10 +143,10 @@ script.remove();
       },
     },
     tallow: {
-      base: chrome.runtime.getURL("skins/Tallow/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Tallow/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Tallow/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Tallow/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Tallow/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Tallow/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Tallow/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Tallow/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xc40000,
         handTint: 0x16b900,
@@ -150,10 +155,10 @@ script.remove();
       },
     },
     imperial: {
-      base: chrome.runtime.getURL("skins/Imperial/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Imperial/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Imperial/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Imperial/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Imperial/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Imperial/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Imperial/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Imperial/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xbc002d,
         handTint: 0xffffff,
@@ -162,10 +167,10 @@ script.remove();
       },
     },
     woodcutter: {
-      base: chrome.runtime.getURL("skins/Woodcutter/player-base-outfitLumber.svg"),
-      hands: chrome.runtime.getURL("skins/Woodcutter/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Woodcutter/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Woodcutter/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Woodcutter/player-base-outfitLumber.svg"),
+      hands: browserRuntime.getURL("skins/Woodcutter/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Woodcutter/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Woodcutter/player-circle-base-02.svg"),
       tints: {
         baseTint: 0xffffff,
         handTint: 0x7e0308,
@@ -174,10 +179,10 @@ script.remove();
       },
     },
     poncho: {
-      base: chrome.runtime.getURL("skins/Poncho/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Poncho/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Poncho/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Poncho/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Poncho/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Poncho/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Poncho/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Poncho/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x1b400c,
         handTint: 0xb5c58b,
@@ -186,10 +191,10 @@ script.remove();
       },
     },
     valiant: {
-      base: chrome.runtime.getURL("skins/Valiant/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Valiant/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Valiant/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Valiant/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Valiant/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Valiant/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Valiant/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Valiant/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x990000,
         handTint: 0x4c1111,
@@ -198,10 +203,10 @@ script.remove();
       },
     },
     tarkhany: {
-      base: chrome.runtime.getURL("skins/Tarkhany/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Tarkhany/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Tarkhany/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Tarkhany/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Tarkhany/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Tarkhany/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Tarkhany/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Tarkhany/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x4b2e83,
         handTint: 0xffb400,
@@ -210,10 +215,10 @@ script.remove();
       },
     },
     water: {
-      base: chrome.runtime.getURL("skins/Water/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Water/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Water/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Water/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Water/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Water/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Water/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Water/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x6cffe9,
         handTint: 0xf4005c,
@@ -222,10 +227,10 @@ script.remove();
       },
     },
     celestial: {
-      base: chrome.runtime.getURL("skins/Celestial/player-base-outfitHeaven.svg"),
-      hands: chrome.runtime.getURL("skins/Celestial/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Celestial/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Celestial/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Celestial/player-base-outfitHeaven.svg"),
+      hands: browserRuntime.getURL("skins/Celestial/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Celestial/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Celestial/player-circle-base-02.svg"),
       tints: {
         baseTint: 0xffffff,
         handTint: 0xd2004f,
@@ -234,10 +239,10 @@ script.remove();
       },
     },
     falling: {
-      base: chrome.runtime.getURL("skins/Falling/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Falling/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Falling/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Falling/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Falling/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Falling/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Falling/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Falling/player-circle-base-02.svg"),
       tints: {
         baseTint: 0x950000,
         handTint: 0xff7800,
@@ -246,10 +251,10 @@ script.remove();
       },
     },
     island: {
-      base: chrome.runtime.getURL("skins/Island/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Island/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Island/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Island/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Island/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Island/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Island/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Island/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xffc600,
         handTint: 0x24600,
@@ -258,10 +263,10 @@ script.remove();
       },
     },
     aquatic: {
-      base: chrome.runtime.getURL("skins/Aquatic/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Aquatic/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Aquatic/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Aquatic/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Aquatic/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Aquatic/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Aquatic/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Aquatic/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xbaa2,
         handTint: 0xffde,
@@ -270,10 +275,10 @@ script.remove();
       },
     },
     coral: {
-      base: chrome.runtime.getURL("skins/Coral/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Coral/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Coral/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Coral/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Coral/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Coral/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Coral/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Coral/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xff5f67,
         handTint: 0xff898f,
@@ -282,10 +287,10 @@ script.remove();
       },
     },
     initiative: {
-      base: chrome.runtime.getURL("skins/Initiative/player-base-02.svg"),
-      hands: chrome.runtime.getURL("skins/Initiative/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Initiative/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Initiative/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Initiative/player-base-02.svg"),
+      hands: browserRuntime.getURL("skins/Initiative/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Initiative/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Initiative/player-circle-base-02.svg"),
       tints: {
         baseTint: 0xc3ae85,
         handTint: 0x8f8064,
@@ -294,10 +299,10 @@ script.remove();
       },
     },
     jumpsuit: {
-      base: chrome.runtime.getURL("skins/Jumpsuit/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Jumpsuit/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Jumpsuit/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Jumpsuit/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Jumpsuit/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Jumpsuit/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Jumpsuit/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Jumpsuit/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x857659,
         handTint: 0xc3ae85,
@@ -306,10 +311,10 @@ script.remove();
       },
     },
     core: {
-      base: chrome.runtime.getURL("skins/Core/player-base-outfitParmaPrestige.svg"),
-      hands: chrome.runtime.getURL("skins/Core/player-hands-02.svg"),
-      feet: chrome.runtime.getURL("skins/Core/player-feet-02.svg"),
-      backpack: chrome.runtime.getURL("skins/Core/player-circle-base-02.svg"),
+      base: browserRuntime.getURL("skins/Core/player-base-outfitParmaPrestige.svg"),
+      hands: browserRuntime.getURL("skins/Core/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Core/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Core/player-circle-base-02.svg"),
       tints: {
         baseTint: 0xe3c081,
         handtint: 0xa9936b,
@@ -318,10 +323,10 @@ script.remove();
       },
     },
     casanova: {
-      base: chrome.runtime.getURL("skins/Casanova/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Casanova/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Casanova/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Casanova/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Casanova/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Casanova/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Casanova/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Casanova/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x42080c,
         handTint: 0x740007,
@@ -330,10 +335,10 @@ script.remove();
       },
     },
     newblack: {
-      base: chrome.runtime.getURL("skins/NewBlack/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/NewBlack/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/NewBlack/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/NewBlack/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/NewBlack/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/NewBlack/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/NewBlack/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/NewBlack/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xff5c22,
         handTint: 0xfc7523,
@@ -342,10 +347,10 @@ script.remove();
       },
     },
     jester: {
-      base: chrome.runtime.getURL("skins/Jester/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Jester/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Jester/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Jester/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Jester/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Jester/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Jester/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Jester/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x770078,
         handTint: 0x4b004c,
@@ -354,10 +359,10 @@ script.remove();
       },
     },
     woodland: {
-      base: chrome.runtime.getURL("skins/Woodland/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Woodland/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Woodland/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Woodland/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Woodland/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Woodland/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Woodland/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Woodland/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x2b332a,
         handTint: 0x5a6c52,
@@ -366,10 +371,10 @@ script.remove();
       },
     },
     fortune: {
-      base: chrome.runtime.getURL("skins/Fortune/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Fortune/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Fortune/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Fortune/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Fortune/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Fortune/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Fortune/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Fortune/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x7f2723,
         handTint: 0xe8c22a,
@@ -378,10 +383,10 @@ script.remove();
       },
     },
     lime: {
-      base: chrome.runtime.getURL("skins/Lime/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Lime/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Lime/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Lime/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Lime/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Lime/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Lime/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Lime/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xc7ff3f,
         handTint: 0xeeff5d,
@@ -390,10 +395,10 @@ script.remove();
       },
     },
     cobalt: {
-      base: chrome.runtime.getURL("skins/Cobalt/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Cobalt/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Cobalt/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Cobalt/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Cobalt/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Cobalt/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Cobalt/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Cobalt/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x2b57,
         handTint: 0x295e7c,
@@ -402,10 +407,10 @@ script.remove();
       },
     },
     fragtastic: {
-      base: chrome.runtime.getURL("skins/Fragtastic/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Fragtastic/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Fragtastic/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Fragtastic/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Fragtastic/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Fragtastic/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Fragtastic/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Fragtastic/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x62591f,
         handTint: 0x7f742a,
@@ -414,10 +419,10 @@ script.remove();
       },
     },
     carbon: {
-      base: chrome.runtime.getURL("skins/Carbon/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Carbon/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Carbon/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Carbon/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Carbon/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Carbon/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Carbon/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Carbon/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x212121,
         handTint: 0x1c1c1c,
@@ -426,10 +431,10 @@ script.remove();
       },
     },
     professional: {
-      base: chrome.runtime.getURL("skins/Professional/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Professional/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Professional/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Professional/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Professional/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Professional/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Professional/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Professional/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xf8c574,
         handTint: 0xbe7800,
@@ -438,10 +443,10 @@ script.remove();
       },
     },
     desert: {
-      base: chrome.runtime.getURL("skins/Desert/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Desert/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Desert/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Desert/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Desert/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Desert/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Desert/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Desert/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xd19b4e,
         handTint: 0xaa6d16,
@@ -450,10 +455,10 @@ script.remove();
       },
     },
     forest: {
-      base: chrome.runtime.getURL("skins/Forest/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Forest/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Forest/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Forest/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Forest/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Forest/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Forest/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Forest/player-circle-base-01.svg"),
       tints: {
         baseTint: 0x999966,
         handTint: 0x848457,
@@ -462,10 +467,10 @@ script.remove();
       },
     },
     target: {
-      base: chrome.runtime.getURL("skins/Target/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Target/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Target/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Target/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Target/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Target/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Target/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Target/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xff0000,
         handTint: 0xd40000,
@@ -474,10 +479,10 @@ script.remove();
       },
     },
     arctic: {
-      base: chrome.runtime.getURL("skins/Arctic/player-base-01.svg"),
-      hands: chrome.runtime.getURL("skins/Arctic/player-hands-01.svg"),
-      feet: chrome.runtime.getURL("skins/Arctic/player-feet-01.svg"),
-      backpack: chrome.runtime.getURL("skins/Arctic/player-circle-base-01.svg"),
+      base: browserRuntime.getURL("skins/Arctic/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Arctic/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Arctic/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Arctic/player-circle-base-01.svg"),
       tints: {
         baseTint: 0xe3e3e3,
         handTint: 0xeeeeee,
@@ -535,235 +540,235 @@ script.remove();
         name: "Fowl Facade",
         rarity: "Rare",
         desc: "M1100 not included.",
-        img: chrome.runtime.getURL("skins/Turkey/loot-shirt-outfitTurkey.svg"),
+        img: browserRuntime.getURL("skins/Turkey/loot-shirt-outfitTurkey.svg"),
       },
       developer: {
         name: "Developer Swag",
         rarity: "Mythic",
         desc: "The limited edition print.",
-        img: chrome.runtime.getURL("skins/Developr/loot-shirt-outfitDev.svg"),
+        img: browserRuntime.getURL("skins/Developr/loot-shirt-outfitDev.svg"),
       },
       designer: {
         name: "Game Designr",
         rarity: "Epic",
         desc: "For those who know.",
-        img: chrome.runtime.getURL("skins/Designr/loot-shirt-outfitGD.svg"),
+        img: browserRuntime.getURL("skins/Designr/loot-shirt-outfitGD.svg"),
       },
       moderator: {
         name: "Game Moderatr",
         rarity: "Epic",
         desc: "For those who wield the power of the pan.",
-        img: chrome.runtime.getURL("skins/Moderatr/loot-shirt-outfitMod.svg"),
+        img: browserRuntime.getURL("skins/Moderatr/loot-shirt-outfitMod.svg"),
       },
       wheat: {
         name: "Splintered Wheat",
         rarity: "Stock",
         desc: "Splinter rounds not included.",
-        img: chrome.runtime.getURL("skins/Wheat/loot-shirt-outfitWheat.svg"),
+        img: browserRuntime.getURL("skins/Wheat/loot-shirt-outfitWheat.svg"),
       },
       noir: {
         name: "Neo Noir",
         rarity: "Epic",
         desc: "The last Nevelskoy...",
-        img: chrome.runtime.getURL("skins/Noir/loot-shirt-outfitNoir.svg"),
+        img: browserRuntime.getURL("skins/Noir/loot-shirt-outfitNoir.svg"),
       },
       weathered: {
         name: "Weathered Red",
         rarity: "Rare",
         desc: "Reminder of a glorious army.",
-        img: chrome.runtime.getURL("skins/Weathered/loot-shirt-outfitWeathered.svg"),
+        img: browserRuntime.getURL("skins/Weathered/loot-shirt-outfitWeathered.svg"),
       },
       stifled: {
         name: "Stifled Blue",
         rarity: "Rare",
         desc: "Reminder of a fallen army.",
-        img: chrome.runtime.getURL("skins/Stifled/loot-shirt-outfitStifled.svg"),
+        img: browserRuntime.getURL("skins/Stifled/loot-shirt-outfitStifled.svg"),
       },
       siberian: {
         name: "Siberian Assualt",
         rarity: "Uncommon",
         desc: "For cold weather operations.",
-        img: chrome.runtime.getURL("skins/Siberian/loot-shirt-outfitSpetsnaz.svg"),
+        img: browserRuntime.getURL("skins/Siberian/loot-shirt-outfitSpetsnaz.svg"),
       },
       green: {
         name: "Greencloak",
         rarity: "Epic",
         desc: "King of the woods.",
-        img: chrome.runtime.getURL("skins/Green/loot-shirt-outfitGreen.svg"),
+        img: browserRuntime.getURL("skins/Green/loot-shirt-outfitGreen.svg"),
       },
       tallow: {
         name: "Tallow's Little Helper",
         rarity: "Uncommon",
         desc: "A nice helping hand.",
-        img: chrome.runtime.getURL("skins/Tallow/loot-shirt-outfitTallow.svg"),
+        img: browserRuntime.getURL("skins/Tallow/loot-shirt-outfitTallow.svg"),
       },
       imperial: {
         name: "Imperial Seal",
         rarity: "Uncommon",
         desc: "The Chrysanthemum Seal.",
-        img: chrome.runtime.getURL("skins/Imperial/loot-shirt-outfitImperial.svg"),
+        img: browserRuntime.getURL("skins/Imperial/loot-shirt-outfitImperial.svg"),
       },
       woodcutter: {
         name: "Woodcutter's Wrap",
         rarity: "Common",
         desc: "Fancy a pancake?",
-        img: chrome.runtime.getURL("skins/Woodcutter/loot-shirt-outfitLumber.svg"),
+        img: browserRuntime.getURL("skins/Woodcutter/loot-shirt-outfitLumber.svg"),
       },
       poncho: {
         name: "Poncho Verde",
         rarity: "Rare",
         desc: "A touch of green in the desert.",
-        img: chrome.runtime.getURL("skins/Poncho/loot-shirt-outfitPoncho.svg"),
+        img: browserRuntime.getURL("skins/Poncho/loot-shirt-outfitPoncho.svg"),
       },
       valiant: {
         name: "Valiant Pineapple",
         rarity: "Rare",
         desc: "Not your average fruit.",
-        img: chrome.runtime.getURL("skins/Valiant/loot-shirt-outfitValiant.svg"),
+        img: browserRuntime.getURL("skins/Valiant/loot-shirt-outfitValiant.svg"),
       },
       tarkhany: {
         name: "Tarkhany Regal",
         rarity: "Rare",
         desc: "Only the finest for the finest.",
-        img: chrome.runtime.getURL("skins/Tarkhany/loot-shirt-outfitTarkhany.svg"),
+        img: browserRuntime.getURL("skins/Tarkhany/loot-shirt-outfitTarkhany.svg"),
       },
       water: {
         name: "Water Elemental",
         rarity: "Uncommon",
         desc: "Flow like the river.",
-        img: chrome.runtime.getURL("skins/Water/loot-shirt-outfitWater.svg"),
+        img: browserRuntime.getURL("skins/Water/loot-shirt-outfitWater.svg"),
       },
       celestial: {
         name: "Celestial Garb",
         rarity: "Epic",
         desc: "Heavenly attire for the divine.",
-        img: chrome.runtime.getURL("skins/Celestial/loot-shirt-outfitHeaven.svg"),
+        img: browserRuntime.getURL("skins/Celestial/loot-shirt-outfitHeaven.svg"),
       },
       falling: {
         name: "Falling Star",
         rarity: "Epic",
         desc: "Like a shooting star.",
-        img: chrome.runtime.getURL("skins/Falling/loot-shirt-outfitFalling.svg"),
+        img: browserRuntime.getURL("skins/Falling/loot-shirt-outfitFalling.svg"),
       },
       island: {
         name: "Island Time",
         rarity: "Uncommon",
         desc: "No time like island time.",
-        img: chrome.runtime.getURL("skins/Island/loot-shirt-outfitIsland.svg"),
+        img: browserRuntime.getURL("skins/Island/loot-shirt-outfitIsland.svg"),
       },
       aquatic: {
         name: "Aquatic Avenger",
         rarity: "Rare",
         desc: "Protector of the deep.",
-        img: chrome.runtime.getURL("skins/Aquatic/loot-shirt-outfitAquatic.svg"),
+        img: browserRuntime.getURL("skins/Aquatic/loot-shirt-outfitAquatic.svg"),
       },
       coral: {
         name: "Coral Guise",
         rarity: "Uncommon",
         desc: "Now thats coral.",
-        img: chrome.runtime.getURL("skins/Coral/loot-shirt-outfitCoral.svg"),
+        img: browserRuntime.getURL("skins/Coral/loot-shirt-outfitCoral.svg"),
       },
       initiative: {
         name: "The Initiative",
         rarity: "Common",
         desc: "For those within the Initiative.",
-        img: chrome.runtime.getURL("skins/Initiative/loot-shirt-outfitInitiative.svg"),
+        img: browserRuntime.getURL("skins/Initiative/loot-shirt-outfitInitiative.svg"),
       },
       jumpsuit: {
         name: "PARMA Jumpsuit",
         rarity: "Common",
         desc: "Next generation inversion.",
-        img: chrome.runtime.getURL("skins/Jumpsuit/loot-shirt-outfitParma.svg"),
+        img: browserRuntime.getURL("skins/Jumpsuit/loot-shirt-outfitParma.svg"),
       },
       core: {
         name: "The Core Jumpsuit",
         rarity: "Rare",
         desc: "Special issue for staffers at Bunker 1.",
-        img: chrome.runtime.getURL("skins/Core/loot-shirt-outfitParmaPrestige.svg"),
+        img: browserRuntime.getURL("skins/Core/loot-shirt-outfitParmaPrestige.svg"),
       },
       casanova: {
         name: "Casanova Silks",
         rarity: "Common",
         desc: "I tried to warn them.",
-        img: chrome.runtime.getURL("skins/Casanova/loot-shirt-outfitCasanova.svg"),
+        img: browserRuntime.getURL("skins/Casanova/loot-shirt-outfitCasanova.svg"),
       },
       newblack: {
         name: "The New Black",
         rarity: "Common",
         desc: "My lucky day!",
-        img: chrome.runtime.getURL("skins/NewBlack/loot-shirt-outfitNewBlack.svg"),
+        img: browserRuntime.getURL("skins/NewBlack/loot-shirt-outfitNewBlack.svg"),
       },
       jester: {
         name: "Jesters Folly",
         rarity: "Common",
         desc: "I'm here for a withdrawl.",
-        img: chrome.runtime.getURL("skins/Jester/loot-shirt-outfitJester.svg"),
+        img: browserRuntime.getURL("skins/Jester/loot-shirt-outfitJester.svg"),
       },
       woodland: {
         name: "Woodland Combat",
         rarity: "Common",
         desc: "Common component of PARMA survival caches.",
-        img: chrome.runtime.getURL("skins/Woodland/loot-shirt-outfitWoodland.svg"),
+        img: browserRuntime.getURL("skins/Woodland/loot-shirt-outfitWoodland.svg"),
       },
       fortune: {
         name: "Royal Fortune",
         rarity: "Rare",
         desc: "Fit for a king.",
-        img: chrome.runtime.getURL("skins/Fortune/loot-shirt-outfitRoyalFortune.svg"),
+        img: browserRuntime.getURL("skins/Fortune/loot-shirt-outfitRoyalFortune.svg"),
       },
       lime: {
         name: "Key Lime",
         rarity: "Common",
         desc: "Not for eating.",
-        img: chrome.runtime.getURL("skins/Lime/loot-shirt-outfitKeyLime.svg"),
+        img: browserRuntime.getURL("skins/Lime/loot-shirt-outfitKeyLime.svg"),
       },
       cobalt: {
         name: "Cobalt Shell",
         rarity: "Common",
         desc: "It means bluish.",
-        img: chrome.runtime.getURL("skins/Cobalt/loot-shirt-outfitCobaltShell.svg"),
+        img: browserRuntime.getURL("skins/Cobalt/loot-shirt-outfitCobaltShell.svg"),
       },
       fragtastic: {
         name: "Fragtastic",
         rarity: "Common",
         desc: "Pin not included. Maybe.",
-        img: chrome.runtime.getURL("skins/Fragtastic/loot-shirt-outfitFragtastic.svg"),
+        img: browserRuntime.getURL("skins/Fragtastic/loot-shirt-outfitFragtastic.svg"),
       },
       carbon: {
         name: "Carbon Fiber",
         rarity: "Uncommon",
         desc: "Military-grade, fine spunt filament.",
-        img: chrome.runtime.getURL("skins/Carbon/loot-shirt-outfitCarbonFiber.svg"),
+        img: browserRuntime.getURL("skins/Carbon/loot-shirt-outfitCarbonFiber.svg"),
       },
       professional: {
         name: "The Professional",
         rarity: "Uncommon",
         desc: "True survivrs wear the dark gloves.",
-        img: chrome.runtime.getURL("skins/Professional/loot-shirt-outfitDarkGloves.svg"),
+        img: browserRuntime.getURL("skins/Professional/loot-shirt-outfitDarkGloves.svg"),
       },
       desert: {
         name: "Desert Camo",
         rarity: "Common",
         desc: "Stealth in the sand.",
-        img: chrome.runtime.getURL("skins/Desert/loot-shirt-outfitDesertCamo.svg"),
+        img: browserRuntime.getURL("skins/Desert/loot-shirt-outfitDesertCamo.svg"),
       },
       forest: { 
       name: "Forest Camo",
       rarity: "Common",
       desc: "Be one with the trees.",
-      img: chrome.runtime.getURL("skins/Forest/loot-shirt-outfitCamo.svg"),
+      img: browserRuntime.getURL("skins/Forest/loot-shirt-outfitCamo.svg"),
       },
       target: {
         name: "Target Practice",
         rarity: "Common",
         desc: "On the plus side, they won't see you bleed.",
-        img: chrome.runtime.getURL("skins/Target/loot-shirt-outfitRed.svg"),
+        img: browserRuntime.getURL("skins/Target/loot-shirt-outfitRed.svg"),
       },
       arctic: {
         name: "Arctic Avenger",
         rarity: "Common",
         desc: "No business like snow business.",
-        img: chrome.runtime.getURL("skins/Arctic/loot-shirt-outfitWhite.svg"),
+        img: browserRuntime.getURL("skins/Arctic/loot-shirt-outfitWhite.svg"),
       },
     };
 
