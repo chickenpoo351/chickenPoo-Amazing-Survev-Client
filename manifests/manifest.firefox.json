@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "chickenPoo's awesome survev.io client",
+    "version": "1.4",
+    "description": "Gives you a bunch of skins to choose from :D.",
+  
+    "permissions": [
+      "webRequest",
+      "webRequestBlocking"
+    ],
+  
+    "host_permissions": [
+      "*://*.survev.io/*"
+    ],
+  
+    "background": {
+      "service_worker": "background.js"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["*://*.survev.io/*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ],
+  
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "DW7nj_xY.patched.js",
+          "L5e7910t.patched.js",
+          "skins/*/*",
+          "pageHook.js"
+        ],
+        "matches": ["<all_urls>"]
+      }
+    ]
+  }
+  
