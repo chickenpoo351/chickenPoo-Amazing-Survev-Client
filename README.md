@@ -102,7 +102,7 @@ A: **Nope** at least it shouldnt but if a mod bans you for looking too stylish s
 ---
 
 **Q: Does this work on (insert whatever non-chromium based browser your using)?**
-A: **Sadly no...** it only works on chromium based browsers for now but I will work on a non-chromium browser version eventually...
+A: **Sadly no...** it only works on chromium based browsers for now ~~but I will work on a non-chromium browser version eventually...~~ nevermind :[ its not going to work out most non-chromium browsers cant redirect files the way I want to because of security issues apparently .. but thats not the end I have an idea but it might take a while so keep your eyes peeled I guess :o
 
 ---
 
