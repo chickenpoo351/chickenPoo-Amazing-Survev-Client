@@ -17,40 +17,50 @@ async function setupChromeRules() {
 
   try {
     const existing = await chrome.declarativeNetRequest.getDynamicRules();
-    if (existing.length) {
-      await chrome.declarativeNetRequest.updateDynamicRules({
-        removeRuleIds: existing.map((r) => r.id),
-      });
-    }
+    console.log("[Background] Existing rules:", existing.map(r => r.id));
+
+    const addRules = [
+      // ---- Redirects ----
+      {
+        id: 1,
+        priority: 1,
+        action: { type: "redirect", redirect: { extensionPath: "/DW7nj_xY.patched.js" } },
+        condition: { urlFilter: "||survev.io/js/DW7nj_xY.js", resourceTypes: ["script"] },
+      },
+      {
+        id: 2,
+        priority: 1,
+        action: { type: "redirect", redirect: { extensionPath: "/L5e7910t.patched.js" } },
+        condition: { urlFilter: "||survev.io/js/L5e7910t.js", resourceTypes: ["script"] },
+      },
+      // ---- Ad blocking ----
+      {
+        id: 1001,
+        priority: 1,
+        action: { type: "block" },
+        condition: { requestDomains: ["fuseplatform.net"], resourceTypes: ["script", "xmlhttprequest", "sub_frame"] },
+      },
+      {
+        id: 1002,
+        priority: 1,
+        action: { type: "block" },
+        condition: { requestDomains: ["cloudflareinsights.com"], resourceTypes: ["script"] },
+      },
+    ];
 
     await chrome.declarativeNetRequest.updateDynamicRules({
-      addRules: [
-        {
-          id: 1,
-          priority: 1,
-          action: { type: "redirect", redirect: { extensionPath: "DW7nj_xY.patched.js" } },
-          condition: {
-            urlFilter: "||survev.io/js/DW7nj_xY.js",
-            resourceTypes: ["script"],
-          },
-        },
-        {
-          id: 2,
-          priority: 1,
-          action: { type: "redirect", redirect: { extensionPath: "L5e7910t.patched.js" } },
-          condition: {
-            urlFilter: "||survev.io/js/L5e7910t.js",
-            resourceTypes: ["script"],
-          },
-        },
-      ],
+      removeRuleIds: existing.map(r => r.id),
+      addRules,
     });
 
-    console.log("[Background] Chrome declarativeNetRequest rules installed.");
+    console.log("[Background] Chrome declarativeNetRequest rules installed successfully.");
   } catch (err) {
     console.error("[Background] Failed to install Chrome rules:", err);
   }
 }
+
+
+
 
 function setupFirefoxRules() {
   if (!isFirefox) return;
