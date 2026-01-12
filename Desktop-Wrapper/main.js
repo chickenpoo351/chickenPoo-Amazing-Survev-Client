@@ -2,7 +2,6 @@ const { app, BrowserWindow, session, ipcMain } = require("electron");
 const path = require("path");
 const express = require("express");
 
-
 function startModServer(port = 31337) {
   const app = express();
 
@@ -28,6 +27,7 @@ function startModServer(port = 31337) {
 
 async function createWindow() {
   const MOD_PORT = 31337;
+  const ses = session.defaultSession;
   await startModServer(MOD_PORT);
 
   const win = new BrowserWindow({
