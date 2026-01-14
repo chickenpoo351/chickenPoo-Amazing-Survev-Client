@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline</title>
+    <link rel="stylesheet" href="offline.css">
+</head>
+
+<body>
+    <h1>Well it looks like you're offline!</h1>
+    <p>just in case you didn't know survev.io doesnt work without an internet connection so this is quite the pickle...
+    </p>
+    <h3>Some things you could try to remedy this are as follows</h3>
+    <div id="div2">
+        <ul>
+            <li>
+                Check your router and make sure any cables needed are connected as well as checking your router's status
+                if it is shown
+            </li>
+            <li>
+                Check your device it could be your Wi-Fi drivers are corrupted or your ethernet port / Wi-Fi reciever
+                have just died...
+            </li>
+            <li>
+                As a last resort try restarting both your device and router sometimes things just fix themselves like
+                that :o
+            </li>
+        </ul>
+    </div>
+    <div id="div1">
+        <a class="button a button-hover" id="reload">Reload</a>
+    </div>
+    <p id="p1">In the meanwhile though you can play around with this thing</p>
+    <p id="p2">(erm I haven't actually made the "thing" yet so ummm check back later...?)</p>
+
+    <script>
+        document.getElementById('reload').addEventListener('click', () => {
+            window.electronAPI.retryLoad()
+        })
+
+        // Optional: auto-retry when connection comes back
+        window.addEventListener('online', () => {
+            window.electronAPI.retryLoad()
+        })
+    </script>
+</body>
+
+</html>

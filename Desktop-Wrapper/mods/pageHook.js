@@ -38,15 +38,13 @@
       return;
     }
 
-    // If PIXI hooks aren't available yet, persist selection and bail out
-    if (!window.CustomSkinAPI || !window.PIXIBaseTexture || !window.PIXITexture) {
-      console.warn('[pageHook] Hooks not ready yet; persisting selection');
-      window.CustomSkinAPI = window.CustomSkinAPI || {};
-      window.CustomSkinAPI.pendingSkinId = selected;
-      try { localStorage.setItem('selectedCustomSkin', selected); } catch (e) {}
-      try { localStorage.setItem('customSkinData', JSON.stringify(skins)); } catch (e) {}
-      return;
-    }
+    window.CustomSkinAPI = window.CustomSkinAPI || {};
+    window.CustomSkinAPI.pendingSkinId = selected;
+    window.CustomSkinAPI.enabled = true;
+
+    try { localStorage.setItem('selectedCustomSkin', selected); } catch (e) { }
+    try { localStorage.setItem('customSkinData', JSON.stringify(skins)); } catch (e) { }
+
 
     const cache = getPixiCache();
     if (!cache) {
@@ -107,14 +105,18 @@
   // Listen for IPC calls from the main/renderer via preload
   if (window.survevCustomSkinMessenger && window.survevCustomSkinMessenger.receiveMessage) {
     try {
-      window.survevCustomSkinMessenger.receiveMessage('apply-skin', (data) => {
-        const { id, customPaths } = data || {};
+      window.survevCustomSkinMessenger.receiveMessage('apply-skin', ({ id, customPaths }) => {
         let skins = customPaths;
         if (skins && typeof skins.base === 'string') {
           skins = { [id]: skins };
         }
         applySkinById(id, skins);
       });
+
+      window.survevCustomSkinMessenger.receiveMessage('restore-skin', () => {
+        restoreSkin();
+      });
+
 
       window.survevCustomSkinMessenger.receiveMessage('restore-skin', () => restoreSkin());
 
@@ -132,67 +134,67 @@
     }
   }
 
-setInterval(() => {
-  const c = window.CustomSkinAPI;
-  if (!c || c.currentSkin) return;
+  setInterval(() => {
+    const c = window.CustomSkinAPI;
+    if (!c || c.currentSkin) return;
 
-  let pendingId = c.pendingSkinId || null;
-  try {
-    if (!pendingId) pendingId = localStorage.getItem('selectedCustomSkin');
-  } catch (err) {
-  }
-  if (!pendingId) return;
-
-  let skin = null;
-  try {
-    const raw = localStorage.getItem('customSkinData');
-    if (raw) {
-      const map = JSON.parse(raw);
-      skin = map?.[pendingId] || null;
-      if (!skin && map && typeof map.base === 'string') skin = map;
+    let pendingId = c.pendingSkinId || null;
+    try {
+      if (!pendingId) pendingId = localStorage.getItem('selectedCustomSkin');
+    } catch (err) {
     }
-  } catch (err) {
-    console.warn('[pageHook] Could not read customSkinData from localStorage', err);
-  }
-  if (!skin) return;
+    if (!pendingId) return;
 
-  // PIXI caches availability
-  const cache = getPixiCache();
-  if (!cache || !window.PIXIBaseTexture || !window.PIXITexture) return;
-
-  // set currentSkin so updateVisuals sees it
-  c.currentSkin = skin;
-  c.pendingSkinId = pendingId;
-  c.enabled = true;
-  console.log('[pageHook] Re-applying persisted skin:', pendingId);
-
-  // Preload & cache textures exactly like the message handler does
-  const parts = {
-    base: skin.base,
-    hands: skin.hands,
-    feet: skin.feet,
-    backpack: skin.backpack,
-  };
-
-  Object.entries(parts).forEach(([key, url]) => {
-    if (!url) return;
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = url;
-    img.onload = () => {
-      try {
-        const base = new window.PIXIBaseTexture(img);
-        const tex = new window.PIXITexture(base);
-        cache[`player-${key}.custom`] = tex;
-        console.log(`[pageHook] Cached (watcher): player-${key}.custom`);
-      } catch (err) {
-        console.warn(`[pageHook] Failed to cache (watcher) ${key}:`, err);
+    let skin = null;
+    try {
+      const raw = localStorage.getItem('customSkinData');
+      if (raw) {
+        const map = JSON.parse(raw);
+        skin = map?.[pendingId] || null;
+        if (!skin && map && typeof map.base === 'string') skin = map;
       }
+    } catch (err) {
+      console.warn('[pageHook] Could not read customSkinData from localStorage', err);
+    }
+    if (!skin) return;
+
+    // PIXI caches availability
+    const cache = getPixiCache();
+    if (!cache || !window.PIXIBaseTexture || !window.PIXITexture) return;
+
+    // set currentSkin so updateVisuals sees it
+    c.currentSkin = skin;
+    c.pendingSkinId = pendingId;
+    c.enabled = true;
+    console.log('[pageHook] Re-applying persisted skin:', pendingId);
+
+    // Preload & cache textures exactly like the message handler does
+    const parts = {
+      base: skin.base,
+      hands: skin.hands,
+      feet: skin.feet,
+      backpack: skin.backpack,
     };
-    img.onerror = () => {
-      console.warn(`[pageHook] Failed to load image for watcher ${key}:`, url);
-    };
-  });
-}, 750);
+
+    Object.entries(parts).forEach(([key, url]) => {
+      if (!url) return;
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = url;
+      img.onload = () => {
+        try {
+          const base = new window.PIXIBaseTexture(img);
+          const tex = new window.PIXITexture(base);
+          cache[`player-${key}.custom`] = tex;
+          console.log(`[pageHook] Cached (watcher): player-${key}.custom`);
+        } catch (err) {
+          console.warn(`[pageHook] Failed to cache (watcher) ${key}:`, err);
+        }
+      };
+      img.onerror = () => {
+        console.warn(`[pageHook] Failed to load image for watcher ${key}:`, url);
+      };
+    });
+  }, 750);
 
 })();

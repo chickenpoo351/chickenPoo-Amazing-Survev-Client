@@ -491,14 +491,14 @@
       console.warn('[custom-skin] localStorage write failed', err);
     }
 
-    window.survevCustomSkinMessenger.sendMessage('apply-skin', { type: 'replace', selected: id, skins: customPaths });
+    window.survevCustomSkinMessenger.sendMessage('apply-skin', { id, customPaths });
 
     console.log(`[custom-skin] Requested skin apply: ${id}`);
   }
 
 
   function restoreOriginal() {
-    window.survevCustomSkinMessenger.sendMessage('apply-skin', { type: 'restore' });
+    window.survevCustomSkinMessenger.sendMessage('restore-skin');
     console.log("[custom-skin] Requested skin restore");
   }
 

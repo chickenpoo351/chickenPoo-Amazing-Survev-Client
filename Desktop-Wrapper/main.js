@@ -13,7 +13,6 @@ function startModServer(port = 31337) {
   });
 
   app.use("/mods", express.static(path.join(__dirname, "mods")));
-
   app.use("/skins", express.static(path.join(__dirname, "skins")));
 
   return new Promise(resolve => {
@@ -24,10 +23,8 @@ function startModServer(port = 31337) {
   });
 }
 
-
 async function createWindow() {
   const MOD_PORT = 31337;
-  const ses = session.defaultSession;
   await startModServer(MOD_PORT);
 
   const win = new BrowserWindow({
@@ -38,7 +35,6 @@ async function createWindow() {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: false,
-      session: ses
     },
   });
 
@@ -59,11 +55,12 @@ async function createWindow() {
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
   );
 
-  ses.webRequest.onBeforeRequest(
+  // Block unwanted requests / patch scripts
+  session.defaultSession.webRequest.onBeforeRequest(
     { urls: ["*://*/*"] },
     (details, callback) => {
       const url = details.url;
-  
+
       if (
         url.includes("fuseplatform.net") ||
         url.includes("cloudflareinsights.com")
@@ -80,7 +77,7 @@ async function createWindow() {
           redirectURL: "http://127.0.0.1:31337/mods/L5e7910t.patched.js"
         });
       }
-  
+
       callback({});
     }
   );
@@ -93,14 +90,18 @@ app.whenReady().then(createWindow);
 
 ipcMain.on('apply-skin', (event, { id, customPaths }) => {
   console.log(`Applying skin: ${id}`);
-
+  const senderWindow = BrowserWindow.fromWebContents(event.sender);
+  senderWindow.webContents.send('apply-skin', { id, customPaths });
   event.sender.send('skin-applied', { id, customPaths });
 });
 
 ipcMain.on('restore-skin', (event) => {
   console.log('Restoring original skin');
+  const senderWindow = BrowserWindow.fromWebContents(event.sender);
+  senderWindow.webContents.send('restore-skin');
   event.sender.send('skin-restored');
 });
+
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
