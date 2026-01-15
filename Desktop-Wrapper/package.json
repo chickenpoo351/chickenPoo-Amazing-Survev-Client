@@ -19,7 +19,7 @@
   },
   "build": {
     "appId": "io.github.chickenpoo.survevwrapper",
-    "productName": "ChickenPoo's Amazing Survev Desktop",
+    "productName": "ChickenPoo's Amazing Survev Client",
     "files": [
       "main.js",
       "preload.js",

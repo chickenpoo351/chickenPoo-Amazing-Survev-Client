@@ -1,6 +1,42 @@
-const { app, BrowserWindow, session, ipcMain, nativeTheme } = require("electron");
+const { app, BrowserWindow, session, ipcMain, nativeTheme, shell } = require("electron");
 const path = require("path");
 const express = require("express");
+
+function isOAuthUrl(url) {
+  try {
+    const u = new URL(url);
+
+    return (
+      u.hostname.endsWith("google.com") ||
+      u.hostname.endsWith("googleusercontent.com") ||
+      u.hostname.includes("oauth") ||
+      u.pathname.includes("oauth")
+    );
+  } catch {
+    return false;
+  }
+}
+
+
+let oauthInProgress = false;
+
+function openOAuth(url) {
+  if (oauthInProgress) return;
+  oauthInProgress = true;
+
+  shell.openExternal(url);
+
+  setTimeout(() => {
+    oauthInProgress = false;
+  }, 3000);
+}
+
+
+
+app.setPath(
+  "userData",
+  path.join(app.getPath("appData"), "SurvevClient")
+);
 
 function startModServer(port = 31337) {
   const app = express();
@@ -51,6 +87,22 @@ async function createWindow() {
     },
   });
 
+  win.webContents.on("will-navigate", (event, url) => {
+    if (isOAuthUrl(url)) {
+      event.preventDefault();
+      openOAuth(url)
+    }
+  });
+  
+  win.webContents.setWindowOpenHandler(({ url }) => {
+    if (isOAuthUrl(url)) {
+      openOAuth(url)
+      return { action: "deny" };
+    }
+    return { action: "allow" };
+  });
+  
+
 
   win.webContents.setUserAgent(
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
@@ -58,7 +110,7 @@ async function createWindow() {
 
   // Block unwanted requests / patch scripts
   win.webContents.session.webRequest.onBeforeRequest(
-    { urls: ["*://*/*"] },
+    { urls: ["*://survev.io/*", "*://api.survev.io/*", "*://accounts.google.com/*"] },
     (details, callback) => {
       const url = details.url;
 
@@ -78,6 +130,18 @@ async function createWindow() {
           redirectURL: "http://127.0.0.1:31337/mods/L5e7910t.patched.js"
         });
       }
+      if (details.url.includes("/auth/google")) {
+        openOAuth(details.url);
+      
+        setImmediate(() => {
+          if (!win.isDestroyed()) {
+            win.loadURL("https://survev.io");
+          }
+        });
+      
+        return callback({ cancel: true });
+      }
+      
 
       callback({});
     }
