@@ -57,7 +57,7 @@ async function createWindow() {
   );
 
   // Block unwanted requests / patch scripts
-  session.defaultSession.webRequest.onBeforeRequest(
+  win.webContents.session.webRequest.onBeforeRequest(
     { urls: ["*://*/*"] },
     (details, callback) => {
       const url = details.url;
@@ -82,6 +82,15 @@ async function createWindow() {
       callback({});
     }
   );
+
+  if (app.isPackaged) {
+    win.webContents.on('before-input-event', (e, input) => {
+      if (input.control && input.shift && input.key.toLowerCase() === 'i') {
+        e.preventDefault();
+      }
+    });
+  }
+  
 
   win.loadURL("https://survev.io");
 }

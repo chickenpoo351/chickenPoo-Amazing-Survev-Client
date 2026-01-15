@@ -1,20 +1,42 @@
 {
   "name": "chickenpoo-survev-wrapper",
   "version": "1.0.0",
-  "description": "",
+  "description": "possibly first ever custom survev.io desktop client?",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "electron-builder --win"
   },
-  "keywords": [],
   "author": "chickenPoo",
   "license": "GPL-3.0-only",
   "packageManager": "pnpm@10.17.1",
   "devDependencies": {
-    "electron": "^39.2.7"
+    "electron": "^39.2.7",
+    "electron-builder": "^26.4.0"
   },
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "build": {
+    "appId": "io.github.chickenpoo.survevwrapper",
+    "productName": "ChickenPoo's Amazing Survev Desktop",
+    "files": [
+      "main.js",
+      "preload.js",
+      "mods/**/*",
+      "skins/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "forceCodeSigning": "false"
+    },
+    "publish": null,
+    "electronDownload": {
+      "mirror": "https://github.com/electron/electron/releases/download/"
+    }
   }
 }
