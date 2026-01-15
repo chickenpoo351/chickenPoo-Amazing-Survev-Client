@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "chickenPoo's awesome survev.io client",
-  "version": "1.4",
+  "version": "1.5",
   "description": "Gives you a bunch of skins to choose from :D.",
   "permissions": [
     "declarativeNetRequest",

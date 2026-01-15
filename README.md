@@ -20,6 +20,7 @@ here's some cool previews showing off the skin Valiant Pineapple
 
 ## Installation Guide
 
+# Extension Version (Recommended)
 ### Step One
 
 download the zip from the latest release
@@ -51,6 +52,31 @@ next after downloading either of these you want to unzip the zip folder you down
 there you go you're done :D enjoy the custom skins (and maybe other stuff if I add them in the future) 
 
 ---
+
+# Desktop Wrapper
+## Important! Read This First
+
+so to temp your expectations I need to get three things out of the way those being
+
+1. This only works on Windows because well I dont have a Linux or macOS machine to test if this would even work...
+
+2. Upon either downloading, installing, or running Windows might yell at you with smartScreen saying something along the lines of 
+
+"Windows just protected your PC"
+
+I know that sounds scary but there really isnt any risk Windows simply does that because the code isnt signed with one of their fancy $100 a year certificates (even then some newly signed apps still get warned about so more than likely you may see this warning) also if you dont believe me you can look at the code it is opensource... and either way if your uncomfortable with that just use the extension version
+
+3. **You cant login** (well technically I havent fully tested it but based on everything ive seen of how the login stuff works it literally just wont work)... yea its that simple there is practically nothing I can do about that unless I controlled the login stuff of survev.io (which I dont...) so alas you have to play as a guest
+
+Anyway though if you dont care / understand all of this then continue setup is simple
+
+## Step One
+
+1. Download the exe from the release section
+
+2. run the exe it will promptly install the application and launch it
+
+3. Like I said above you might get the smartScreen "Windows just protected your PC" warning if that happens just click the "More info" text and then click the run anyway button (note: like I said if your uncomfortable or something with this just use the extension version or if you can code you can read the source yourself in this repo and verify nothing spooky is going on and if you want to go the extra step you can just download the whole repo and build the installer yourself in case you for some reason suspect some code spoofing is going on :o) 
 
 ## Important
 I know your probably itching to try out the extension but please keep reading I dont want random issues being opened because little timmy thought this does something it didnt and now he's going to make an issue in all caps saying something like 
@@ -103,6 +129,8 @@ A: **Nope** at least it shouldnt but if a mod bans you for looking too stylish s
 
 **Q: Does this work on (insert whatever non-chromium based browser your using)?**
 A: **Sadly no...** it only works on chromium based browsers for now ~~but I will work on a non-chromium browser version eventually...~~ nevermind :[ its not going to work out most non-chromium browsers cant redirect files the way I want to because of security issues apparently .. but thats not the end I have an idea but it might take a while so keep your eyes peeled I guess :o
+edit 2:
+erm so it kinda works essentially you can play without a chromium based browser by using the desktop wrapper but you cant login so pick your poison I guess? yea alas nothing can be done unless I can somehow get the google/discord Oauth to work on the wrapper...
 
 ---
 
