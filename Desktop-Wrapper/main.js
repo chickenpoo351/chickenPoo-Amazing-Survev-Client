@@ -1,4 +1,4 @@
-const { app, BrowserWindow, session, ipcMain } = require("electron");
+const { app, BrowserWindow, session, ipcMain, nativeTheme } = require("electron");
 const path = require("path");
 const express = require("express");
 
@@ -30,6 +30,19 @@ async function createWindow() {
   const win = new BrowserWindow({
     width: 1280,
     height: 800,
+    useContentSize: true,
+    frame: true,
+    fullscreen: false,
+    maximizable: true,
+    resizable: true,
+    backgroundColor: '#121212',
+    autoHideMenuBar: true,
+    titleBarOverlay: {
+      color: '#00000000',
+      symbolColor: '#ffffff',
+      height: 32,
+    },
+    vibrancy: 'acrylic',
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
@@ -38,18 +51,6 @@ async function createWindow() {
     },
   });
 
-  // Filter console spam
-  win.webContents.on("console-message", (event, level, message) => {
-    if (
-      message.includes("Autofill.enable") ||
-      message.includes("Autofill.setAddresses") ||
-      message.includes("ERR_CERT") ||
-      message.includes("ERR_CONNECTION") ||
-      message.includes("ERR_NAME")
-    ) {
-      event.preventDefault();
-    }
-  });
 
   win.webContents.setUserAgent(
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
@@ -83,8 +84,9 @@ async function createWindow() {
   );
 
   win.loadURL("https://survev.io");
-  win.webContents.openDevTools({ mode: "detach" });
 }
+
+nativeTheme.themeSource = 'dark';
 
 app.whenReady().then(createWindow);
 
