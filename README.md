@@ -56,7 +56,7 @@ there you go you're done :D enjoy the custom skins (and maybe other stuff if I a
 # Desktop Wrapper
 ## Important! Read This First
 
-so to temp your expectations I need to get three things out of the way those being
+so to temper your expectations I need to get three things out of the way those being
 
 1. This only works on Windows because well I dont have a Linux or macOS machine to test if this would even work...
 
