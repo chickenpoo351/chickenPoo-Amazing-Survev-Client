@@ -1,12 +1,18 @@
 # chickenPoo's awesome survev client
 my own custom survev client aiming to be better than all others :o
 - **Made by [chickenPoo](https://github.com/chickenpoo351)**
+- **Small Note:** I would really appreciate if you starred the repo if it brought any value to you each star is a bit more motivation for me to continue working on this thanks for reading :D
 
 ---
 
 ## Why would you need this?
 
-well you really dont but its cool to have currently it just gives you **custom skins** but more features are on the way :D
+well you really dont but its cool to have currently it gives you 
+- **Custom Skins** so you can personalize your character like no other client :D
+- The option between a **Chrome Extension** or **Desktop Wrapper** depending on what you can run
+- And I'm pretty sure this is a **one of kind** survev.io client in more ways than one so thats cool too :D
+
+but more features are on the way :D
 
 here's some cool previews showing off the skin Valiant Pineapple
 
@@ -66,7 +72,13 @@ so to temper your expectations I need to get three things out of the way those b
 
 I know that sounds scary but there really isnt any risk Windows simply does that because the code isnt signed with one of their fancy $100 a year certificates (even then some newly signed apps still get warned about so more than likely you may see this warning) also if you dont believe me you can look at the code it is opensource... and either way if your uncomfortable with that just use the extension version
 
-3. **You cant login** (well technically I havent fully tested it but based on everything ive seen of how the login stuff works it literally just wont work)... yea its that simple there is practically nothing I can do about that unless I controlled the login stuff of survev.io (which I dont...) so alas you have to play as a guest
+3. **You cant login** ... yea its that simple
+
+**But** if anyone has any ideas on how this can be done please do let me know you can open a PR or issue or whatever I would really appreciate any help you all could provide on this (and also anything else)
+
+(well technically I havent fully tested it but based on everything ive seen of how the login stuff works it literally just wont work)
+
+ there is practically nothing I can do about that unless I controlled the login stuff of survev.io (which I dont...) so alas you have to play as a guest unless a fix is found that my goofy brain missed lol
 
 Anyway though if you dont care / understand all of this then continue setup is simple
 
