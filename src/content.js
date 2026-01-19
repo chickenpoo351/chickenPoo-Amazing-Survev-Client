@@ -1,10 +1,10 @@
 // browser compatability stuff
 let browserRuntime;
 
-if(typeof chrome !== "undefined" && chrome.runtime) {
+if (typeof chrome !== "undefined" && chrome.runtime) {
   browserRuntime = chrome.runtime;
   console.log('using chrome API');
-} else if(typeof browser !== "undefined" && browser.runtime) {
+} else if (typeof browser !== "undefined" && browser.runtime) {
   browserRuntime = browser.runtime;
   console.log('using browser API');
 }
@@ -752,11 +752,11 @@ script.remove();
         desc: "Stealth in the sand.",
         img: browserRuntime.getURL("skins/Desert/loot-shirt-outfitDesertCamo.svg"),
       },
-      forest: { 
-      name: "Forest Camo",
-      rarity: "Common",
-      desc: "Be one with the trees.",
-      img: browserRuntime.getURL("skins/Forest/loot-shirt-outfitCamo.svg"),
+      forest: {
+        name: "Forest Camo",
+        rarity: "Common",
+        desc: "Be one with the trees.",
+        img: browserRuntime.getURL("skins/Forest/loot-shirt-outfitCamo.svg"),
       },
       target: {
         name: "Target Practice",
@@ -889,4 +889,274 @@ script.remove();
   document.head.appendChild(style);
 
   window.addEventListener("load", autoApply);
+
+  // fps and ping stuff :o
+  let lastFrame = performance.now();
+  let smoothedFrameTime = 16.67;
+  const smoothing = 0.1;
+
+  const fpsUI = document.createElement("div");
+  fpsUI.style.cssText = `
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 2147483647;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font: 12px monospace;
+    padding: 4px 8px;
+  `;
+  document.body.appendChild(fpsUI);
+
+  function frameLoop(now) {
+    const delta = now - lastFrame;
+    lastFrame = now;
+
+    smoothedFrameTime += (delta - smoothedFrameTime) * smoothing;
+
+    const fps = 1000 / smoothedFrameTime;
+
+    fpsUI.textContent = `${fps.toFixed(1)} FPS`;
+
+    requestAnimationFrame(frameLoop);
+  }
+
+  requestAnimationFrame(frameLoop);
+
+
+  let pingInterval = null;
+  let urlInterval = null;
+
+
+  const pingUI = document.createElement("div");
+  pingUI.style.cssText = `
+    position: fixed;
+    top: 32px;
+    left: 8px;
+    z-index: 2147483647;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font: 12px monospace;
+    padding: 4px 8px;
+  `;
+  document.body.appendChild(pingUI);
+
+  function detectServerChange() {
+    const currentUrl = location.href;
+    const isSpecialUrl = /\/#\w+/.test(currentUrl);
+
+    const teamSelectElement = document.getElementById("team-server-select");
+    const mainSelectElement = document.getElementById("server-select-main");
+
+    const region =
+      isSpecialUrl && teamSelectElement
+        ? teamSelectElement.value
+        : mainSelectElement
+          ? mainSelectElement.value
+          : null;
+
+    if (region) {
+      chrome.runtime.sendMessage({
+        type: "SET_SERVER",
+        region
+      });
+    }
+  }
+
+  function waitForServerSelect() {
+    const observer = new MutationObserver(() => {
+      const teamSelectElement =
+        document.getElementById("team-server-select");
+      const mainSelectElement =
+        document.getElementById("server-select-main");
+
+      if (teamSelectElement || mainSelectElement) {
+        observer.disconnect();
+        detectServerChange();
+      }
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  waitForServerSelect();
+
+
+  function updatePingUI() {
+    try {
+      chrome.runtime.sendMessage(
+        { type: "GET_PING" },
+        (result) => {
+          if (chrome.runtime.lastError) {
+            stopPingUI();
+            return;
+          }
+
+          if (!result || result.ping == null) {
+            pingUI.textContent = "Ping: --";
+            return;
+          }
+
+          pingUI.textContent =
+            `Ping (${result.region}): ${result.ping} ms`;
+        }
+      );
+    } catch {
+      stopPingUI();
+    }
+  }
+
+  pingInterval = setInterval(updatePingUI, 300);
+
+  document.addEventListener("change", (e) => {
+    if (
+      e.target.id === "team-server-select" ||
+      e.target.id === "server-select-main"
+    ) {
+      detectServerChange();
+    }
+  });
+
+  let lastUrl = location.href;
+  urlInterval = setInterval(() => {
+    if (location.href !== lastUrl) {
+      lastUrl = location.href;
+      detectServerChange();
+    }
+  }, 500);
+
+  // kill counter
+  const killUI = document.createElement("div");
+  killUI.style.cssText = `
+    position: fixed;
+    top: 56px;
+    left: 8px;
+    z-index: 2147483647;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font: 12px monospace;
+    padding: 4px 8px;
+  `;
+  document.body.appendChild(killUI);
+
+
+  const inGameKillCounter =
+    document.querySelector('.ui-player-kills.js-ui-player-kills');
+
+  if (!inGameKillCounter) {
+    console.warn('Kill counter not found');
+    return;
+  }
+
+  function getKillAmount() {
+    return inGameKillCounter.textContent.trim();
+  }
+
+  let lastKillCount = getKillAmount();
+  killUI.textContent = `Kills: ${lastKillCount}`;
+
+  const killObserver = new MutationObserver(() => {
+    const currentKillCount = getKillAmount();
+
+    if (currentKillCount !== lastKillCount) {
+      lastKillCount = currentKillCount;
+      killUI.textContent = `Kills: ${currentKillCount}`;
+    }
+  });
+
+  killObserver.observe(inGameKillCounter, {
+    characterData: true,
+    childList: true,
+    subtree: true
+  });
+
+  // UI stuff
+  const modalSettingsBody = document.querySelector('#modal-settings-body');
+
+  modalSettingsBody.style.cssText = `
+    max-height: 80vh;
+    overflow-y: auto;
+  `
+
+  function createSectionHeader(text) {
+    const p = document.createElement('p');
+    p.className = 'modal-settings-checkbox-text';
+    p.textContent = text;
+    return p;
+  }
+
+  function createUIToggle(checkBoxId, textContent) {
+    if (document.getElementById(checkBoxId)) return null;
+
+    let tempUIToggleCreation = document.createElement('div');
+    tempUIToggleCreation.className = 'modal-settings-item';
+
+    let tempCheckBox = document.createElement('input');
+    tempCheckBox.type = 'checkbox';
+    tempCheckBox.id = checkBoxId;
+
+    const tempText = document.createElement('p');
+    tempText.className = 'modal-settings-checkbox-text';
+    tempText.textContent = textContent;
+
+    tempUIToggleCreation.appendChild(tempCheckBox);
+    tempUIToggleCreation.appendChild(tempText);
+
+    return { tempCheckBox, tempUIToggleCreation }
+  }
+
+  let settingUINodes = [];
+
+  const checkBoxModHeader = createSectionHeader('Chicken\'s Client Options');
+  settingUINodes.push(checkBoxModHeader);
+
+  const fpsToggle = createUIToggle('fps-checkbox', 'FPS Counter');
+  const fpsToggleDiv = fpsToggle.tempUIToggleCreation;
+  const fpsCheckBox = fpsToggle.tempCheckBox;
+  settingUINodes.push(fpsToggleDiv);
+
+  const pingToggle = createUIToggle('ping-checkbox', 'Ping Counter');
+  const pingToggleDiv = pingToggle.tempUIToggleCreation;
+  const pingCheckBox = pingToggle.tempCheckBox;
+  settingUINodes.push(pingToggleDiv);
+
+  const killToggle = createUIToggle('kill-checkbox', 'Kill Counter');
+  const killToggleDiv = killToggle.tempUIToggleCreation;
+  const killCheckBox = killToggle.tempCheckBox;
+  settingUINodes.push(killToggleDiv);
+
+  function injectModSettingsUI({ containerSelector, findAnchor, nodes }) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return false;
+
+    const anchor = findAnchor(container);
+    if (!anchor) return false;
+
+    anchor.after(...nodes);
+    return true;
+  }
+
+  injectModSettingsUI({ containerSelector: '#modal-settings-body', findAnchor: (container) => [...container.children].find(div => div.querySelector('input#anonPlayerNames')), nodes: settingUINodes });
+
+  function updateFPSVisibility() {
+    fpsUI.style.display = fpsCheckBox.checked ? '' : 'none';
+  }
+  function updatePingVisibility() {
+    pingUI.style.display = pingCheckBox.checked ? '' : 'none';
+  }
+  function updateKillVisibility() {
+    killUI.style.display = killCheckBox.checked ? '' : 'none';
+  }
+
+  updateFPSVisibility();
+  updatePingVisibility();
+  updateKillVisibility();
+
+  fpsCheckBox.addEventListener('change', updateFPSVisibility);
+  pingCheckBox.addEventListener('change', updatePingVisibility);
+  killCheckBox.addEventListener('change', updateKillVisibility);
+
 })();

@@ -16,6 +16,14 @@ Further updates will be documented here
 
 (also small note if you got the reference for the commit name that contains this readme update we can be friends :D)
 
+## Update 1/19/2026 (AKA 1 day after the update)
+
+so good news I found a fix (took a while though...) however I have made some changes the desktop wrapper will no longer share this repo with the extension version instead I have moved it to its own repo so that I can enable auto updates for it you can find the repo here if you are interested in downloading that version [you can download it here](https://github.com/chickenpoo351/chickenpoo-amazing-survev-client-desktop) however everyone else there should be no changes...
+
+I will leave this here for a few days in case someone wonders why the update was late but after that I will move it somewhere...
+
+(hopefully I didnt leave out any info... if I did oh well...)
+
 # chickenPoo's awesome survev client
 my own custom survev client aiming to be better than all others :o
 - **Made by [chickenPoo](https://github.com/chickenpoo351)**

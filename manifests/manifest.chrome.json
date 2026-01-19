@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "chickenPoo's awesome survev.io client",
-  "version": "1.5",
+  "version": "1.6",
   "description": "Gives you a bunch of skins to choose from :D.",
   "permissions": [
     "declarativeNetRequest",
@@ -29,8 +29,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "DW7nj_xY.patched.js",
-        "L5e7910t.patched.js",
+        "C3zlxoP4.patched.js",
+        "ZR85mxzY.patched.js",
         "skins/*/*",
         "pageHook.js"
       ],
