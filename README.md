@@ -63,7 +63,15 @@ there you go you're done :D enjoy the custom skins (and maybe other stuff if I a
 # Desktop Wrapper
 ## Important! Read This First
 
-so to temper your expectations I need to get three things out of the way those being
+so to temper your expectations I need to get three things out of the way those being but also know this version does have upsides too such as 
+
+1. **Auto-Updates!** yup unlike the extension version which you will have to always delete then re-install each update the desktop client auto updates as soon as it can without you doing anything
+
+2. **Possible Performance** while technically unproved in theory this might offer some better performance because you arent exactly running a full browser so your system doesnt have to worry about tabs, history, and other browser quirks
+
+anyway though here are the downsides
+
+---
 
 1. This only works on Windows because well I dont have a Linux or macOS machine to test if this would even work...
 
@@ -81,15 +89,11 @@ I know that sounds scary but there really isnt any risk Windows simply does that
 
  there is practically nothing I can do about that unless I controlled the login stuff of survev.io (which I dont...) so alas you have to play as a guest unless a fix is found that my goofy brain missed lol
 
-Anyway though if you dont care / understand all of this then continue setup is simple
+Anyway though if you dont care / understand all of this then and you are interested in using it then follow this link
 
-## Step One
+[**Click Me To Go To The Desktop Wrapper Repo!**](https://github.com/chickenpoo351/chickenpoo-amazing-survev-client-desktop)
 
-1. Download the exe from the release section
-
-2. run the exe it will promptly install the application and launch it
-
-3. Like I said above you might get the smartScreen "Windows just protected your PC" warning if that happens just click the "More info" text and then click the run anyway button (note: like I said if your uncomfortable or something with this just use the extension version or if you can code you can read the source yourself in this repo and verify nothing spooky is going on and if you want to go the extra step you can just download the whole repo and build the installer yourself in case you for some reason suspect some code spoofing is going on :o) 
+---
 
 ## Important
 I know your probably itching to try out the extension but please keep reading I dont want random issues being opened because little timmy thought this does something it didnt and now he's going to make an issue in all caps saying something like 
