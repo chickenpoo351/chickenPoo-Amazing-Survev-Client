@@ -24,14 +24,14 @@ async function setupChromeRules() {
       {
         id: 1,
         priority: 1,
-        action: { type: "redirect", redirect: { extensionPath: "/C3zlxoP4.patched.js" } },
-        condition: { urlFilter: "||survev.io/js/C3zlxoP4.js", resourceTypes: ["script"] },
+        action: { type: "redirect", redirect: { extensionPath: "/BOXMOoHD.patched.js" } },
+        condition: { urlFilter: "||survev.io/js/BOXMOoHD.js", resourceTypes: ["script"] },
       },
       {
         id: 2,
         priority: 1,
-        action: { type: "redirect", redirect: { extensionPath: "/ZR85mxzY.patched.js" } },
-        condition: { urlFilter: "||survev.io/js/ZR85mxzY.js", resourceTypes: ["script"] },
+        action: { type: "redirect", redirect: { extensionPath: "/D5u1ACs0.patched.js" } },
+        condition: { urlFilter: "||survev.io/js/D5u1ACs0.js", resourceTypes: ["script"] },
       },
       // ---- Ad blocking ----
       {
