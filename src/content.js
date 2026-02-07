@@ -490,6 +490,54 @@ script.remove();
         backpackTint: 0xdcdcdc,
       },
     },
+    beach: {
+      base: browserRuntime.getURL("skins/Beach/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Beach/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Beach/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Beach/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0xedca7e,
+        handTint: 0xfae5b6,
+        footTint: 0xfae5b6,
+        backpackTint: 0x7c995b,
+      },
+    },
+    coconut: {
+      base: browserRuntime.getURL("skins/Coconut/player-base-01.svg"),
+      hands: browserRuntime.getURL("skins/Coconut/player-hands-01.svg"),
+      feet: browserRuntime.getURL("skins/Coconut/player-feet-01.svg"),
+      backpack: browserRuntime.getURL("skins/Coconut/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x765836,
+        handTint: 0x362d22,
+        footTint: 0xe9edf6,
+        backpackTint: 0xe9edf6,
+      },
+    },
+    tidal: {
+      base: browserRuntime.getURL("skins/Tidal/player-base-02.svg0"),
+      hands: browserRuntime.getURL("skins/Tidal/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Tidal/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Tidal/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0x1198ec,
+        handTint: 0xfdf5f1,
+        footTint: 0xfdf5f1,
+        backpackTint: 0x2178ae,
+      },
+    },
+    parrot : {
+      base: browserRuntime.getURL("skins/Parrot/player-base-outfitParrotfish.svg"),
+      hands: browserRuntime.getURL("skins/Parrot/player-hands-02.svg"),
+      feet: browserRuntime.getURL("skins/Parrot/player-feet-02.svg"),
+      backpack: browserRuntime.getURL("skins/Parrot/player-circle-base-01.svg"),
+      tints: {
+        baseTint: 0xffffff,
+        handTint: 0x3ac6c6,
+        footTint: 0x306790,
+        backpackTint: 0x37aeab,
+      },
+    },
   };
 
   // --- Send message to pageHook ---
@@ -769,6 +817,30 @@ script.remove();
         rarity: "Common",
         desc: "No business like snow business.",
         img: browserRuntime.getURL("skins/Arctic/loot-shirt-outfitWhite.svg"),
+      },
+      beach: {
+        name: "Beach Shored",
+        rarity: "Common",
+        desc: "Stranded!",
+        img: browserRuntime.getURL("skins/Beach/loot-shirt-outfitBeachShored.svg"),
+      },
+      coconut: {
+        name: "Coconut Frenzy",
+        rarity: "Common",
+        desc: "It's the coco fruit!",
+        img: browserRuntime.getURL("skins/Coconut/loot-shirt-outfitCoconutFrenzy.svg"),
+      },
+      tidal: {
+        name: "Tidal Wave",
+        rarity: "Common",
+        desc: "Send them to Davy Jones' locker.",
+        img: browserRuntime.getURL("skins/Tidal/loot-shirt-outfitWave.svg"),
+      },
+      parrot: {
+        name: "Parrotfish",
+        rarity: "Rare",
+        desc: "Show off your scales around the island. Coral, beware!",
+        img: browserRuntime.getURL("skins/Parrot/loot-shirt-outfitParrotfish.svg"),
       },
     };
 
