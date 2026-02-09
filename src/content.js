@@ -515,7 +515,7 @@ script.remove();
       },
     },
     tidal: {
-      base: browserRuntime.getURL("skins/Tidal/player-base-02.svg0"),
+      base: browserRuntime.getURL("skins/Tidal/player-base-02.svg"),
       hands: browserRuntime.getURL("skins/Tidal/player-hands-02.svg"),
       feet: browserRuntime.getURL("skins/Tidal/player-feet-02.svg"),
       backpack: browserRuntime.getURL("skins/Tidal/player-circle-base-01.svg"),
